@@ -22,7 +22,7 @@ o exportandolo directamente en la terminal en uso.
 Si lo agregaste al archivo, lo cargamos en la terminal
 
 ```
-    $ source ~./bash_profile
+    $ source ~/.bash_profile
 ```
 
 luego modificamos el usuario y nombre de la variable que contiene la contraseña
