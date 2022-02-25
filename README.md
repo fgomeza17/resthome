@@ -1,24 +1,63 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Este repositorio referencia al desafio tecnico para postulacion el cual
+consiste en programar una aplicacion web.
 
-Things you may want to cover:
+Una vez descargado el repositorio se debe realizar lo siguiente para ejecutarlo:
 
-* Ruby version
+Entramos al directorio del repositorio
 
-* System dependencies
+```
+    $ cd /resthome
+```
 
-* Configuration
+Primero debemos exportar a una variable de entorno la password de nuestra 
+base de datos de postgresql agregando la sigiente linea al archivo .bash_profile
+o exportandolo directamente en la terminal en uso.
 
-* Database creation
+```
+    export USER_DATABASE_PASSWORD="password"
+```
 
-* Database initialization
+Si lo agregaste al archivo, lo cargamos en la terminal
 
-* How to run the test suite
+```
+    $ source ~./bash_profile
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+luego modificamos el usuario y nombre de la variable que contiene la contraseña
+en el archivo que hace mención a la base de datos. 
+Este se encuentra en resthome/config/database.yml
 
-* Deployment instructions
+```
+    username: tuUsuarioPostgres
+    password: <%= ENV['USER_DATABASE_PASSWORD'] %>
+```
 
-* ...
+Luego instalamos las dependencias de la aplicacion
+
+```
+    $ rails bundle
+```
+
+Creamos la base de datos
+```
+    $ rails db:create
+```
+
+Hacemos las migraciones
+```
+    $ rails db:migrate
+```
+
+Y le agregamos algunos datos por defecto a la tabla cabanas
+```
+    $ rails db:seed
+```
+
+Ejecutamos el servidor
+```
+    $ rails s
+```
+
+en el navegador nos conectamos a http://localhost:3000
