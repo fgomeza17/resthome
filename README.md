@@ -37,7 +37,7 @@ Este se encuentra en resthome/config/database.yml
 Luego instalamos las dependencias de la aplicacion
 
 ```
-    $ rails bundle
+    $ bundle
 ```
 
 Creamos la base de datos
