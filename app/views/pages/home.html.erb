@@ -1,0 +1,22 @@
+<div class="jumbotron p-5 bg-primary text-white rounded text-center">
+    <h1 class="glow-text-gold">Rest Home</h1>
+    <p class="glow-text-gold">descansa con nosotros</p><br>
+    <%= link_to 'Encuentra tu cabaña', '/cabanas/', class: 'btn btn-secondary align-items-center' %>
+</div>
+
+<div class="container col-4 text-center mt-5">
+    <% if current_user %>
+        <p>Hola <%= current_user.nombre %>!</p>
+        <p>
+            Te has autenticado correctamente con tu cuenta RestHome. <br>
+            Ahora ya puedes realizar tus reservas!
+
+        </p>
+        <div><%= link_to 'Ver cabañas', '/cabanas/', class: 'btn btn-secondary align-items-center' %></div>
+        <div><%= link_to "Cerrar sesión", destroy_user_session_path, class:"mt-6", "data-turbo-method": :"delete" %></div>
+    <% else %>
+        <p>No estás registrado?</p>
+        <%= link_to "Regístrate!", new_user_registration_path %> <br>
+        <%= link_to "Ingresar", new_user_session_path %>
+    <% end %>
+</div>

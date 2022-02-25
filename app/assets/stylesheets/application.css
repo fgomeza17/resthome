@@ -1,0 +1,36 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ .jumbotron {
+    background-color: #003B6D;
+    color: #fff;
+    padding: 100px 25px;
+    font-family: Montserrat, sans-serif;
+    background-image: url("https://media.glampinghub.com/CACHE/images/accommodations/accommodationsaccommodation_57066_listing_image_9aa7150b8c3747508ad59bb87292bc5b-glamping-e0910921-db94-4724-81fe-9ffbc2c5c4d6/9f825d513c1171bfcfb1befc94755c35.avif");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.glow-text-gold {
+    text-shadow: 0px 0px 6px rgb(0, 0, 0) !important;
+    color:rgb(255, 255, 255);
+}
+
+.btn-secondary {
+    color:rgb(255, 255, 255) !important;
+}

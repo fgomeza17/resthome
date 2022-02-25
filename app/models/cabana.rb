@@ -1,0 +1,2 @@
+class Cabana < ApplicationRecord
+end

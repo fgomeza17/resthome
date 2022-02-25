@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id_usuario: MyString
+  integer,: MyString
+  id_cabana: MyString
+  integer,: MyString
+  fecha_inicio: MyString
+  date,: MyString
+  fecha_termino: MyString
+  date: MyString
+
+two:
+  id_usuario: MyString
+  integer,: MyString
+  id_cabana: MyString
+  integer,: MyString
+  fecha_inicio: MyString
+  date,: MyString
+  fecha_termino: MyString
+  date: MyString

@@ -1,0 +1,27 @@
+   <div class="container mt-5">
+      <div class="row">
+        <% @cablist.each do |cab| %>
+        <div class="col-md col-l col-sm">
+          <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src=<%= cab.img_1 %> class="d-block w-100 img-thumbnail" style="objetc-fit:cover" alt="...">
+              </div>
+            </div>
+          </div>
+      <div class="card-body">
+        <h5 class="card-title"> <%= cab.nombre %> </h5>
+        <p class="card-text"><%= cab.minidescripcion %></p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Para <%= cab.personas %> personas</li>
+        <li class="list-group-item">$<%= cab.precio %></li>
+      </ul>
+      <div class="card-body">
+        
+        <li><%= link_to "Ver mas", cabana_path(cab.id), class: "btn btn-danger text-uppercase mr-2 px-4" %></li>
+      </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
