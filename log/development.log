@@ -43128,3 +43128,2181 @@ Processing by PagesController#home as HTML
 Completed 200 OK in 9ms (Views: 7.7ms | ActiveRecord: 0.3ms | Allocations: 5322)
 
 
+  [1m[35m (248.0ms)[0m  [1m[35mCREATE DATABASE "cabanas" ENCODING = 'unicode'[0m
+  [1m[35m (108.3ms)[0m  [1m[35mCREATE DATABASE "cabanas_test" ENCODING = 'unicode'[0m
+  [1m[35m (20.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (19.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3972876670423673880)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateCabanas (20220219013330)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (14.5ms)[0m  [1m[35mCREATE TABLE "cabanas" ("id" bigserial primary key, "nombre" character varying, "descripcion" text, "minidescripcion" text, "personas" integer, "precio" integer, "img_1" text, "img_2" text, "img_3" text, "img_4" text, "img_5" text, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220219013330"]]
+  [1m[36mTRANSACTION (6.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to DeviseCreateUsers (20220221021549)
+  [1m[36mTRANSACTION (5.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (14.8ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "nombre" character varying DEFAULT '' NOT NULL, "apellido" character varying DEFAULT '' NOT NULL, "rut" character varying DEFAULT '' NOT NULL, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp(6), "remember_created_at" timestamp(6), "role" integer DEFAULT 0, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_rut" ON "users" ("rut")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220221021549"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddNombreToUsers (20220221193944)
+  [1m[36mTRANSACTION (6.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.0ms)[0m  [1m[35mALTER TABLE "users" ADD "nombre" character varying[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(3972876670423673880)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3972876670423673880)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateReservas (20220221194752)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (21.6ms)[0m  [1m[35mCREATE TABLE "reservas" ("id" bigserial primary key, "id_usuario" integer, "id_cabana" integer, "start_time" date, "end_time" date, "nombre_cabana" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220221194752"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-02-25 22:21:03.498336"], ["updated_at", "2022-02-25 22:21:03.498336"]]
+  [1m[36mTRANSACTION (6.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(3972876670423673880)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (91.2ms)[0m  [1m[35mCREATE DATABASE "cabanas" ENCODING = 'unicode'[0m
+  [1m[35m (66.1ms)[0m  [1m[35mCREATE DATABASE "cabanas_test" ENCODING = 'unicode'[0m
+  [1m[35m (4.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (3.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3972876670423673880)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateCabanas (20220219013330)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (25.7ms)[0m  [1m[35mCREATE TABLE "cabanas" ("id" bigserial primary key, "nombre" character varying, "descripcion" text, "minidescripcion" text, "personas" integer, "precio" integer, "img_1" text, "img_2" text, "img_3" text, "img_4" text, "img_5" text, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220219013330"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to DeviseCreateUsers (20220221021549)
+  [1m[36mTRANSACTION (5.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (19.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "nombre" character varying DEFAULT '' NOT NULL, "apellido" character varying DEFAULT '' NOT NULL, "rut" character varying DEFAULT '' NOT NULL, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp(6), "remember_created_at" timestamp(6), "role" integer DEFAULT 0, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_rut" ON "users" ("rut")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220221021549"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateReservas (20220221194752)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (25.3ms)[0m  [1m[35mCREATE TABLE "reservas" ("id" bigserial primary key, "id_usuario" integer, "id_cabana" integer, "start_time" date, "end_time" date, "nombre_cabana" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220221194752"]]
+  [1m[36mTRANSACTION (4.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-02-25 22:22:31.249929"], ["updated_at", "2022-02-25 22:22:31.249929"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(3972876670423673880)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCabana Create (0.7ms)[0m  [1m[32mINSERT INTO "cabanas" ("nombre", "descripcion", "minidescripcion", "personas", "precio", "img_1", "img_2", "img_3", "img_4", "img_5", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["nombre", "LesPaul"], ["descripcion", "Amplia cabaña con 4 dormitorios y 3 baños ideal para familia de máximo 8 personas. Cuenta con doble estacionamiento y una increible vista al paisaje natural"], ["minidescripcion", "4 dormitorios, 3 baños, estacionamiento"], ["personas", 8], ["precio", 95000], ["img_1", "https://www.frutillarelcipres.cl/wp-content/uploads/2018/04/cabanas05-1024x682.jpg"], ["img_2", "https://www.frutillarelcipres.cl/wp-content/uploads/2018/04/habitacion_arriba-150x150.jpg"], ["img_3", "https://www.frutillarelcipres.cl/wp-content/uploads/2018/04/sala-1024x836.jpg"], ["img_4", "https://www.frutillarelcipres.cl/wp-content/uploads/2015/03/comedor-150x150.jpg"], ["img_5", "https://www.frutillarelcipres.cl/wp-content/uploads/2018/04/vistas01-1-150x150.jpg"], ["created_at", "2022-02-25 22:22:52.318712"], ["updated_at", "2022-02-25 22:22:52.318712"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCabana Create (0.2ms)[0m  [1m[32mINSERT INTO "cabanas" ("nombre", "descripcion", "minidescripcion", "personas", "precio", "img_1", "img_2", "img_3", "img_4", "img_5", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["nombre", "Telecaster"], ["descripcion", "Amplia cabaña con 3 dormitorios y 3 baños ideal para familia de máximo 6 personas. Cuenta con estacionamiento y una increible vista al paisaje natural"], ["minidescripcion", "3 dormitorios, 3 baños, estacionamiento"], ["personas", 6], ["precio", 75000], ["img_1", "https://www.frutillarelcipres.cl/wp-content/uploads/2015/03/las-3-caban%CC%83as-2-1024x683.jpg"], ["img_2", "https://www.frutillarelcipres.cl/wp-content/uploads/2018/04/sala2-1024x768.jpg"], ["img_3", "https://www.frutillarelcipres.cl/wp-content/uploads/2015/03/cocina-y-comedor-1024x768.jpg"], ["img_4", "https://www.frutillarelcipres.cl/wp-content/uploads/2018/04/bano01-1024x768.jpg"], ["img_5", "https://www.frutillarelcipres.cl/wp-content/uploads/2018/04/vistas01-1-1024x768.jpg"], ["created_at", "2022-02-25 22:22:52.323410"], ["updated_at", "2022-02-25 22:22:52.323410"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCabana Create (0.2ms)[0m  [1m[32mINSERT INTO "cabanas" ("nombre", "descripcion", "minidescripcion", "personas", "precio", "img_1", "img_2", "img_3", "img_4", "img_5", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["nombre", "Artcore"], ["descripcion", "Cabaña con 2 dormitorios y 1 baño ideal para familia de máximo 4 personas. Cuenta con estacionamiento y una increible vista al paisaje natural"], ["minidescripcion", "2 dormitorios, 1 baños, estacionamiento"], ["personas", 4], ["precio", 50000], ["img_1", "https://www.cabanasplayalechagua.cl/wp-content/uploads/2019/01/IMG_4367-150x150.jpg"], ["img_2", "https://www.cabanasplayalechagua.cl/wp-content/uploads/2019/01/IMG_4327-150x150.jpg"], ["img_3", "https://www.cabanasplayalechagua.cl/wp-content/uploads/2019/01/IMG_4323-150x150.jpg"], ["img_4", "https://www.cabanasplayalechagua.cl/wp-content/uploads/2019/01/IMG_4338-150x150.jpg"], ["img_5", "https://www.cabanasplayalechagua.cl/wp-content/uploads/2019/01/IMG_4372-150x150.jpg"], ["created_at", "2022-02-25 22:22:52.326125"], ["updated_at", "2022-02-25 22:22:52.326125"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/" for ::1 at 2022-02-25 19:23:06 -0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 6.9ms | Allocations: 1543)
+  [1m[36mCabana Load (0.7ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 25.4ms | Allocations: 15153)
+  Rendered layout layouts/application.html.erb (Duration: 112.7ms | Allocations: 57646)
+Completed 200 OK in 132ms (Views: 107.4ms | ActiveRecord: 10.1ms | Allocations: 66156)
+
+
+Started GET "/cabanas/" for ::1 at 2022-02-25 19:23:08 -0300
+Processing by CabanasController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cabanas/index.html.erb within layouts/application
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/cabanas/index.html.erb:3
+  Rendered cabanas/index.html.erb within layouts/application (Duration: 3.3ms | Allocations: 1448)
+  Rendered shared/_navbar.html.erb (Duration: 1.0ms | Allocations: 233)
+  Rendered layout layouts/application.html.erb (Duration: 8.1ms | Allocations: 4270)
+Completed 200 OK in 11ms (Views: 9.6ms | ActiveRecord: 0.3ms | Allocations: 5422)
+
+
+Started GET "/cabanas/2" for ::1 at 2022-02-25 19:23:11 -0300
+Processing by CabanasController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mCabana Load (0.4ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas" WHERE "cabanas"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/cabanas_controller.rb:7:in `show'
+  [1m[36mCACHE Cabana Load (0.0ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas" WHERE "cabanas"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/cabanas_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering cabanas/show.html.erb within layouts/application
+  [1m[36mReserva Load (0.9ms)[0m  [1m[34mSELECT "reservas".* FROM "reservas"[0m
+  ↳ app/views/cabanas/show.html.erb:54
+  Rendered /Users/fgomez/.rvm/gems/ruby-3.1.0/gems/simple_calendar-2.4.3/app/views/simple_calendar/_month_calendar.html.erb (Duration: 11.8ms | Allocations: 9530)
+  Rendered cabanas/show.html.erb within layouts/application (Duration: 16.5ms | Allocations: 12376)
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 2.0ms | Allocations: 797)
+  Rendered layout layouts/application.html.erb (Duration: 22.0ms | Allocations: 15402)
+Completed 200 OK in 31ms (Views: 21.3ms | ActiveRecord: 1.8ms | Allocations: 19603)
+
+
+Started GET "/users/sign_in" for ::1 at 2022-02-25 19:23:15 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 1.6ms | Allocations: 1389)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 12.1ms | Allocations: 5494)
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 1.9ms | Allocations: 953)
+  Rendered layout layouts/application.html.erb (Duration: 17.8ms | Allocations: 8749)
+Completed 200 OK in 32ms (Views: 19.7ms | ActiveRecord: 2.8ms | Allocations: 20174)
+
+
+Started GET "/users/sign_up" for ::1 at 2022-02-25 19:23:17 -0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.7ms | Allocations: 385)
+  Rendered devise/shared/_links.html.erb (Duration: 0.4ms | Allocations: 273)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 6.1ms | Allocations: 3872)
+  [1m[36mCabana Load (0.2ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 1.8ms | Allocations: 962)
+  Rendered layout layouts/application.html.erb (Duration: 10.9ms | Allocations: 7136)
+Completed 200 OK in 15ms (Views: 13.0ms | ActiveRecord: 0.2ms | Allocations: 8812)
+
+
+Started POST "/users" for ::1 at 2022-02-25 19:23:42 -0300
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"nombre"=>"Felipe", "apellido"=>"Gómez", "rut"=>"111111111", "email"=>"fel@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Enviar"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "fel@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("nombre", "apellido", "rut", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "role", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["nombre", "Felipe"], ["apellido", "Gómez"], ["rut", "111111111"], ["email", "fel@gmail.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["role", 0], ["created_at", "2022-02-25 22:23:42.770177"], ["updated_at", "2022-02-25 22:23:42.770177"]]
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 244ms (ActiveRecord: 3.8ms | Allocations: 9834)
+
+
+Started GET "/" for ::1 at 2022-02-25 19:23:42 -0300
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:8
+  Rendered pages/home.html.erb within layouts/application (Duration: 3.1ms | Allocations: 1585)
+  [1m[36mCabana Load (0.2ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 1.2ms | Allocations: 817)
+  Rendered layout layouts/application.html.erb (Duration: 7.2ms | Allocations: 4650)
+Completed 200 OK in 8ms (Views: 7.1ms | ActiveRecord: 0.5ms | Allocations: 4995)
+
+
+Started GET "/cabanas/" for ::1 at 2022-02-25 19:23:44 -0300
+Processing by CabanasController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cabanas/index.html.erb within layouts/application
+  [1m[36mCabana Load (0.2ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/cabanas/index.html.erb:3
+  Rendered cabanas/index.html.erb within layouts/application (Duration: 1.9ms | Allocations: 790)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:15
+  Rendered shared/_navbar.html.erb (Duration: 1.6ms | Allocations: 977)
+  Rendered layout layouts/application.html.erb (Duration: 7.1ms | Allocations: 4107)
+Completed 200 OK in 8ms (Views: 7.0ms | ActiveRecord: 0.5ms | Allocations: 4399)
+
+
+Started GET "/cabanas/2" for ::1 at 2022-02-25 19:23:45 -0300
+Processing by CabanasController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas" WHERE "cabanas"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/cabanas_controller.rb:7:in `show'
+  [1m[36mCACHE Cabana Load (0.0ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas" WHERE "cabanas"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/cabanas_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering cabanas/show.html.erb within layouts/application
+  [1m[36mReserva Load (0.2ms)[0m  [1m[34mSELECT "reservas".* FROM "reservas"[0m
+  ↳ app/views/cabanas/show.html.erb:54
+  Rendered /Users/fgomez/.rvm/gems/ruby-3.1.0/gems/simple_calendar-2.4.3/app/views/simple_calendar/_month_calendar.html.erb (Duration: 4.7ms | Allocations: 6299)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/cabanas/show.html.erb:77
+  Rendered cabanas/show.html.erb within layouts/application (Duration: 9.1ms | Allocations: 8232)
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 1.2ms | Allocations: 804)
+  Rendered layout layouts/application.html.erb (Duration: 13.0ms | Allocations: 11160)
+Completed 200 OK in 17ms (Views: 12.6ms | ActiveRecord: 1.2ms | Allocations: 12442)
+
+
+Started GET "/reservas/new" for ::1 at 2022-02-25 19:23:48 -0300
+Processing by ReservasController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:19:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering reservas/new.html.erb within layouts/application
+  Rendered reservas/_form.html.erb (Duration: 4.4ms | Allocations: 1824)
+  Rendered reservas/new.html.erb within layouts/application (Duration: 5.4ms | Allocations: 2289)
+  [1m[36mCabana Load (0.2ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 1.3ms | Allocations: 906)
+  Rendered layout layouts/application.html.erb (Duration: 9.4ms | Allocations: 5513)
+Completed 200 OK in 22ms (Views: 10.5ms | ActiveRecord: 2.7ms | Allocations: 13954)
+
+
+Started POST "/reservas" for ::1 at 2022-02-25 19:23:55 -0300
+Processing by ReservasController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "reserva"=>{"start_time"=>"2022-02-10", "end_time"=>"2022-02-19"}, "commit"=>"Reservar"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:36:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/reserva.rb:12:in `overlapping'
+  [1m[36mReserva Pluck (0.2ms)[0m  [1m[34mSELECT "reservas"."start_time", "reservas"."end_time", "reservas"."id_cabana" FROM "reservas"[0m
+  ↳ app/models/reserva.rb:12:in `overlapping'
+  [1m[36mReserva Create (0.8ms)[0m  [1m[32mINSERT INTO "reservas" ("id_usuario", "id_cabana", "start_time", "end_time", "nombre_cabana", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["id_usuario", 1], ["id_cabana", 2], ["start_time", "2022-02-10"], ["end_time", "2022-02-19"], ["nombre_cabana", "Telecaster"], ["created_at", "2022-02-25 22:23:55.467226"], ["updated_at", "2022-02-25 22:23:55.467226"]]
+  ↳ app/controllers/reservas_controller.rb:41:in `block in create'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/reservas_controller.rb:41:in `block in create'
+Redirected to http://localhost:3000/reservas/1
+Completed 302 Found in 9ms (ActiveRecord: 1.7ms | Allocations: 4035)
+
+
+Started GET "/reservas/1" for ::1 at 2022-02-25 19:23:55 -0300
+Processing by ReservasController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mReserva Load (0.3ms)[0m  [1m[34mSELECT "reservas".* FROM "reservas" WHERE "reservas"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:77:in `set_reserva'
+  Rendering layout layouts/application.html.erb
+  Rendering reservas/show.html.erb within layouts/application
+  Rendered reservas/_reserva.html.erb (Duration: 0.8ms | Allocations: 408)
+  Rendered reservas/show.html.erb within layouts/application (Duration: 15.5ms | Allocations: 1666)
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:15
+  Rendered shared/_navbar.html.erb (Duration: 2.9ms | Allocations: 1774)
+  Rendered layout layouts/application.html.erb (Duration: 21.5ms | Allocations: 5683)
+Completed 200 OK in 25ms (Views: 21.4ms | ActiveRecord: 0.8ms | Allocations: 7242)
+
+
+Started DELETE "/reservas/1" for ::1 at 2022-02-25 19:26:42 -0300
+Processing by ReservasController#destroy as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"1"}
+  [1m[36mReserva Load (0.3ms)[0m  [1m[34mSELECT "reservas".* FROM "reservas" WHERE "reservas"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:77:in `set_reserva'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/reservas_controller.rb:66:in `destroy'
+  [1m[36mReserva Destroy (0.2ms)[0m  [1m[31mDELETE FROM "reservas" WHERE "reservas"."id" = $1[0m  [["id", 1]]
+  ↳ app/controllers/reservas_controller.rb:66:in `destroy'
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/reservas_controller.rb:66:in `destroy'
+Redirected to http://localhost:3000/reservas
+Completed 302 Found in 7ms (ActiveRecord: 2.6ms | Allocations: 2654)
+
+
+Started GET "/reservas" for ::1 at 2022-02-25 19:26:42 -0300
+Processing by ReservasController#index as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering reservas/index.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/reservas/index.html.erb:2
+  [1m[36mReserva Load (0.2ms)[0m  [1m[34mSELECT "reservas".* FROM "reservas"[0m
+  ↳ app/views/reservas/index.html.erb:6
+  Rendered reservas/index.html.erb within layouts/application (Duration: 4.5ms | Allocations: 2074)
+  [1m[36mCabana Load (0.2ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 1.6ms | Allocations: 805)
+  Rendered layout layouts/application.html.erb (Duration: 9.8ms | Allocations: 5061)
+Completed 200 OK in 11ms (Views: 9.6ms | ActiveRecord: 0.6ms | Allocations: 5518)
+
+
+Started GET "/reservas/new" for ::1 at 2022-02-25 19:26:43 -0300
+Processing by ReservasController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:19:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering reservas/new.html.erb within layouts/application
+  Rendered reservas/_form.html.erb (Duration: 1.2ms | Allocations: 680)
+  Rendered reservas/new.html.erb within layouts/application (Duration: 1.4ms | Allocations: 779)
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 1.4ms | Allocations: 804)
+  Rendered layout layouts/application.html.erb (Duration: 6.0ms | Allocations: 3701)
+Completed 200 OK in 9ms (Views: 6.1ms | ActiveRecord: 0.5ms | Allocations: 4940)
+
+
+Started POST "/reservas" for ::1 at 2022-02-25 19:26:45 -0300
+Processing by ReservasController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "reserva"=>{"start_time"=>"", "end_time"=>""}, "commit"=>"Reservar"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:36:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering reservas/new.html.erb within layouts/application
+  Rendered reservas/_form.html.erb (Duration: 0.4ms | Allocations: 175)
+  Rendered reservas/new.html.erb within layouts/application (Duration: 0.7ms | Allocations: 274)
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 1.4ms | Allocations: 806)
+  Rendered layout layouts/application.html.erb (Duration: 5.3ms | Allocations: 3198)
+Completed 422 Unprocessable Entity in 9ms (Views: 5.5ms | ActiveRecord: 0.5ms | Allocations: 5139)
+
+
+Started GET "/cabanas/2" for ::1 at 2022-02-25 19:26:49 -0300
+Processing by CabanasController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mCabana Load (0.2ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas" WHERE "cabanas"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/cabanas_controller.rb:7:in `show'
+  [1m[36mCACHE Cabana Load (0.0ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas" WHERE "cabanas"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/cabanas_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering cabanas/show.html.erb within layouts/application
+  [1m[36mReserva Load (0.2ms)[0m  [1m[34mSELECT "reservas".* FROM "reservas"[0m
+  ↳ app/views/cabanas/show.html.erb:54
+  Rendered /Users/fgomez/.rvm/gems/ruby-3.1.0/gems/simple_calendar-2.4.3/app/views/simple_calendar/_month_calendar.html.erb (Duration: 5.0ms | Allocations: 6274)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/cabanas/show.html.erb:77
+  Rendered cabanas/show.html.erb within layouts/application (Duration: 8.1ms | Allocations: 8165)
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 1.4ms | Allocations: 804)
+  Rendered layout layouts/application.html.erb (Duration: 12.3ms | Allocations: 11087)
+Completed 200 OK in 15ms (Views: 12.0ms | ActiveRecord: 0.9ms | Allocations: 12358)
+
+
+Started GET "/reservas/new" for ::1 at 2022-02-25 19:26:50 -0300
+Processing by ReservasController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:19:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering reservas/new.html.erb within layouts/application
+  Rendered reservas/_form.html.erb (Duration: 1.3ms | Allocations: 613)
+  Rendered reservas/new.html.erb within layouts/application (Duration: 1.5ms | Allocations: 712)
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 1.4ms | Allocations: 804)
+  Rendered layout layouts/application.html.erb (Duration: 5.6ms | Allocations: 3634)
+Completed 200 OK in 9ms (Views: 5.9ms | ActiveRecord: 0.5ms | Allocations: 4895)
+
+
+Started GET "/reservas" for ::1 at 2022-02-25 19:27:03 -0300
+Processing by ReservasController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering reservas/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/reservas/index.html.erb:2
+  [1m[36mReserva Load (0.2ms)[0m  [1m[34mSELECT "reservas".* FROM "reservas"[0m
+  ↳ app/views/reservas/index.html.erb:6
+  Rendered reservas/index.html.erb within layouts/application (Duration: 3.0ms | Allocations: 1604)
+  [1m[36mCabana Load (0.4ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 1.7ms | Allocations: 805)
+  Rendered layout layouts/application.html.erb (Duration: 7.6ms | Allocations: 4539)
+Completed 200 OK in 9ms (Views: 7.2ms | ActiveRecord: 0.8ms | Allocations: 4842)
+
+
+Started GET "/" for ::1 at 2022-02-25 19:27:08 -0300
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:8
+  Rendered pages/home.html.erb within layouts/application (Duration: 2.2ms | Allocations: 1076)
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 1.3ms | Allocations: 805)
+  Rendered layout layouts/application.html.erb (Duration: 6.4ms | Allocations: 4011)
+Completed 200 OK in 7ms (Views: 6.3ms | ActiveRecord: 0.4ms | Allocations: 4303)
+
+
+Started GET "/cabanas/" for ::1 at 2022-02-25 19:27:11 -0300
+Processing by CabanasController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cabanas/index.html.erb within layouts/application
+  [1m[36mCabana Load (0.2ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/cabanas/index.html.erb:3
+  Rendered cabanas/index.html.erb within layouts/application (Duration: 1.6ms | Allocations: 786)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:15
+  Rendered shared/_navbar.html.erb (Duration: 2.3ms | Allocations: 968)
+  Rendered layout layouts/application.html.erb (Duration: 7.2ms | Allocations: 4066)
+Completed 200 OK in 8ms (Views: 7.1ms | ActiveRecord: 0.5ms | Allocations: 4357)
+
+
+Started GET "/cabanas/2" for ::1 at 2022-02-25 19:27:14 -0300
+Processing by CabanasController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mCabana Load (0.2ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas" WHERE "cabanas"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/cabanas_controller.rb:7:in `show'
+  [1m[36mCACHE Cabana Load (0.0ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas" WHERE "cabanas"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/cabanas_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering cabanas/show.html.erb within layouts/application
+  [1m[36mReserva Load (0.2ms)[0m  [1m[34mSELECT "reservas".* FROM "reservas"[0m
+  ↳ app/views/cabanas/show.html.erb:54
+  Rendered /Users/fgomez/.rvm/gems/ruby-3.1.0/gems/simple_calendar-2.4.3/app/views/simple_calendar/_month_calendar.html.erb (Duration: 5.4ms | Allocations: 6246)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/cabanas/show.html.erb:77
+  Rendered cabanas/show.html.erb within layouts/application (Duration: 9.1ms | Allocations: 8110)
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 1.4ms | Allocations: 804)
+  Rendered layout layouts/application.html.erb (Duration: 13.6ms | Allocations: 11041)
+Completed 200 OK in 17ms (Views: 13.3ms | ActiveRecord: 0.9ms | Allocations: 12306)
+
+
+Started GET "/reservas/new" for ::1 at 2022-02-25 19:27:21 -0300
+Processing by ReservasController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:19:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering reservas/new.html.erb within layouts/application
+  Rendered reservas/_form.html.erb (Duration: 1.4ms | Allocations: 613)
+  Rendered reservas/new.html.erb within layouts/application (Duration: 1.6ms | Allocations: 712)
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 1.3ms | Allocations: 804)
+  Rendered layout layouts/application.html.erb (Duration: 5.5ms | Allocations: 3637)
+Completed 200 OK in 9ms (Views: 5.7ms | ActiveRecord: 0.4ms | Allocations: 4883)
+
+
+Started POST "/reservas" for ::1 at 2022-02-25 19:27:37 -0300
+Processing by ReservasController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "reserva"=>{"start_time"=>"2022-02-26", "end_time"=>"2022-02-23"}, "commit"=>"Reservar"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:36:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/reserva.rb:12:in `overlapping'
+  [1m[36mReserva Pluck (0.2ms)[0m  [1m[34mSELECT "reservas"."start_time", "reservas"."end_time", "reservas"."id_cabana" FROM "reservas"[0m
+  ↳ app/models/reserva.rb:12:in `overlapping'
+  [1m[36mReserva Create (0.3ms)[0m  [1m[32mINSERT INTO "reservas" ("id_usuario", "id_cabana", "start_time", "end_time", "nombre_cabana", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["id_usuario", 1], ["id_cabana", 2], ["start_time", "2022-02-26"], ["end_time", "2022-02-23"], ["nombre_cabana", "Telecaster"], ["created_at", "2022-02-25 22:27:37.559570"], ["updated_at", "2022-02-25 22:27:37.559570"]]
+  ↳ app/controllers/reservas_controller.rb:41:in `block in create'
+  [1m[36mTRANSACTION (6.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/reservas_controller.rb:41:in `block in create'
+Redirected to http://localhost:3000/reservas/2
+Completed 302 Found in 15ms (ActiveRecord: 6.8ms | Allocations: 3566)
+
+
+Started GET "/reservas/2" for ::1 at 2022-02-25 19:27:37 -0300
+Processing by ReservasController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mReserva Load (0.3ms)[0m  [1m[34mSELECT "reservas".* FROM "reservas" WHERE "reservas"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:77:in `set_reserva'
+  Rendering layout layouts/application.html.erb
+  Rendering reservas/show.html.erb within layouts/application
+  Rendered reservas/_reserva.html.erb (Duration: 0.1ms | Allocations: 44)
+  Rendered reservas/show.html.erb within layouts/application (Duration: 0.9ms | Allocations: 522)
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:15
+  Rendered shared/_navbar.html.erb (Duration: 3.9ms | Allocations: 1613)
+  Rendered layout layouts/application.html.erb (Duration: 8.2ms | Allocations: 4256)
+Completed 200 OK in 11ms (Views: 8.2ms | ActiveRecord: 0.8ms | Allocations: 5071)
+
+
+Started GET "/reservas" for ::1 at 2022-02-25 19:31:34 -0300
+Processing by ReservasController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering reservas/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/reservas/index.html.erb:2
+  [1m[36mReserva Load (0.3ms)[0m  [1m[34mSELECT "reservas".* FROM "reservas"[0m
+  ↳ app/views/reservas/index.html.erb:6
+  Rendered reservas/_reserva.html.erb (Duration: 0.1ms | Allocations: 44)
+  Rendered reservas/index.html.erb within layouts/application (Duration: 3.9ms | Allocations: 1773)
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 1.3ms | Allocations: 804)
+  Rendered layout layouts/application.html.erb (Duration: 7.9ms | Allocations: 4703)
+Completed 200 OK in 9ms (Views: 7.6ms | ActiveRecord: 0.7ms | Allocations: 5006)
+
+
+Started GET "/reservas/new" for ::1 at 2022-02-25 19:31:36 -0300
+Processing by ReservasController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:19:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering reservas/new.html.erb within layouts/application
+  Rendered reservas/_form.html.erb (Duration: 1.1ms | Allocations: 613)
+  Rendered reservas/new.html.erb within layouts/application (Duration: 1.3ms | Allocations: 712)
+  [1m[36mCabana Load (0.2ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 1.4ms | Allocations: 804)
+  Rendered layout layouts/application.html.erb (Duration: 5.7ms | Allocations: 3634)
+Completed 200 OK in 8ms (Views: 5.9ms | ActiveRecord: 0.4ms | Allocations: 4874)
+
+
+Started GET "/cabanas/3" for ::1 at 2022-02-25 19:33:40 -0300
+Processing by CabanasController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mCabana Load (0.5ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas" WHERE "cabanas"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/cabanas_controller.rb:7:in `show'
+  [1m[36mCACHE Cabana Load (0.0ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas" WHERE "cabanas"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/cabanas_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering cabanas/show.html.erb within layouts/application
+  [1m[36mReserva Load (0.3ms)[0m  [1m[34mSELECT "reservas".* FROM "reservas"[0m
+  ↳ app/views/cabanas/show.html.erb:54
+  Rendered /Users/fgomez/.rvm/gems/ruby-3.1.0/gems/simple_calendar-2.4.3/app/views/simple_calendar/_month_calendar.html.erb (Duration: 5.6ms | Allocations: 6247)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/cabanas/show.html.erb:77
+  Rendered cabanas/show.html.erb within layouts/application (Duration: 23.9ms | Allocations: 8150)
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 1.6ms | Allocations: 804)
+  Rendered layout layouts/application.html.erb (Duration: 29.0ms | Allocations: 11072)
+Completed 200 OK in 33ms (Views: 28.6ms | ActiveRecord: 1.3ms | Allocations: 12339)
+
+
+Started GET "/users/edit" for ::1 at 2022-02-25 19:33:44 -0300
+Processing by Devise::RegistrationsController#edit as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/edit.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered devise/registrations/edit.html.erb within layouts/application (Duration: 4.6ms | Allocations: 3034)
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 1.5ms | Allocations: 814)
+  Rendered layout layouts/application.html.erb (Duration: 8.8ms | Allocations: 5966)
+Completed 200 OK in 13ms (Views: 9.1ms | ActiveRecord: 0.5ms | Allocations: 7693)
+
+
+Started GET "/reservas" for ::1 at 2022-02-25 19:33:48 -0300
+Processing by ReservasController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering reservas/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/reservas/index.html.erb:2
+  [1m[36mReserva Load (0.2ms)[0m  [1m[34mSELECT "reservas".* FROM "reservas"[0m
+  ↳ app/views/reservas/index.html.erb:6
+  Rendered reservas/_reserva.html.erb (Duration: 0.1ms | Allocations: 44)
+  Rendered reservas/index.html.erb within layouts/application (Duration: 3.7ms | Allocations: 1794)
+  [1m[36mCabana Load (0.2ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 1.2ms | Allocations: 804)
+  Rendered layout layouts/application.html.erb (Duration: 7.7ms | Allocations: 4724)
+Completed 200 OK in 9ms (Views: 7.4ms | ActiveRecord: 0.6ms | Allocations: 5027)
+
+
+Started GET "/cabanas/2" for ::1 at 2022-02-25 19:36:09 -0300
+Processing by CabanasController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mCabana Load (0.2ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas" WHERE "cabanas"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/cabanas_controller.rb:7:in `show'
+  [1m[36mCACHE Cabana Load (0.0ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas" WHERE "cabanas"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/cabanas_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering cabanas/show.html.erb within layouts/application
+  [1m[36mReserva Load (0.2ms)[0m  [1m[34mSELECT "reservas".* FROM "reservas"[0m
+  ↳ app/views/cabanas/show.html.erb:54
+  Rendered /Users/fgomez/.rvm/gems/ruby-3.1.0/gems/simple_calendar-2.4.3/app/views/simple_calendar/_month_calendar.html.erb (Duration: 6.2ms | Allocations: 6246)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/cabanas/show.html.erb:77
+  Rendered cabanas/show.html.erb within layouts/application (Duration: 11.2ms | Allocations: 8135)
+  [1m[36mCabana Load (0.2ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 1.5ms | Allocations: 804)
+  Rendered layout layouts/application.html.erb (Duration: 16.3ms | Allocations: 11057)
+Completed 200 OK in 19ms (Views: 16.0ms | ActiveRecord: 0.9ms | Allocations: 12322)
+
+
+Started GET "/reservas/new" for ::1 at 2022-02-25 19:36:10 -0300
+Processing by ReservasController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:19:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering reservas/new.html.erb within layouts/application
+  Rendered reservas/_form.html.erb (Duration: 1.2ms | Allocations: 610)
+  Rendered reservas/new.html.erb within layouts/application (Duration: 1.4ms | Allocations: 709)
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 1.5ms | Allocations: 804)
+  Rendered layout layouts/application.html.erb (Duration: 5.5ms | Allocations: 3631)
+Completed 200 OK in 9ms (Views: 5.6ms | ActiveRecord: 0.5ms | Allocations: 4874)
+
+
+Started GET "/reservas/new" for ::1 at 2022-02-25 19:37:36 -0300
+Processing by ReservasController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:19:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering reservas/new.html.erb within layouts/application
+  Rendered reservas/_form.html.erb (Duration: 2.0ms | Allocations: 1406)
+  Rendered reservas/new.html.erb within layouts/application (Duration: 2.7ms | Allocations: 1835)
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 2.3ms | Allocations: 1560)
+  Rendered layout layouts/application.html.erb (Duration: 8.6ms | Allocations: 6110)
+Completed 200 OK in 14ms (Views: 10.0ms | ActiveRecord: 0.4ms | Allocations: 8252)
+
+
+Started GET "/reservas/new" for ::1 at 2022-02-25 19:37:59 -0300
+Processing by ReservasController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:19:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering reservas/new.html.erb within layouts/application
+  Rendered reservas/_form.html.erb (Duration: 2.0ms | Allocations: 1401)
+  Rendered reservas/new.html.erb within layouts/application (Duration: 2.8ms | Allocations: 1830)
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 2.2ms | Allocations: 1556)
+  Rendered layout layouts/application.html.erb (Duration: 8.7ms | Allocations: 6101)
+Completed 200 OK in 14ms (Views: 10.1ms | ActiveRecord: 0.5ms | Allocations: 8393)
+
+
+Started GET "/reservas/new" for ::1 at 2022-02-25 19:38:35 -0300
+Processing by ReservasController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:19:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering reservas/new.html.erb within layouts/application
+  Rendered reservas/_form.html.erb (Duration: 2.0ms | Allocations: 1398)
+  Rendered reservas/new.html.erb within layouts/application (Duration: 2.9ms | Allocations: 1827)
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 2.2ms | Allocations: 1556)
+  Rendered layout layouts/application.html.erb (Duration: 8.7ms | Allocations: 6098)
+Completed 200 OK in 14ms (Views: 10.1ms | ActiveRecord: 0.5ms | Allocations: 8381)
+
+
+Started POST "/reservas" for ::1 at 2022-02-25 19:40:15 -0300
+Processing by ReservasController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "reserva"=>{"start_time"=>"", "end_time"=>""}, "commit"=>"Reservar"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:36:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering reservas/new.html.erb within layouts/application
+  Rendered reservas/_form.html.erb (Duration: 0.6ms | Allocations: 311)
+  Rendered reservas/new.html.erb within layouts/application (Duration: 0.8ms | Allocations: 422)
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 7.5ms | Allocations: 3984)
+  Rendered layout layouts/application.html.erb (Duration: 22.7ms | Allocations: 19759)
+Completed 422 Unprocessable Entity in 45ms (Views: 21.2ms | ActiveRecord: 7.6ms | Allocations: 30823)
+
+
+Started GET "/cabanas/2" for ::1 at 2022-02-25 19:40:49 -0300
+Processing by CabanasController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas" WHERE "cabanas"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/cabanas_controller.rb:7:in `show'
+  [1m[36mCACHE Cabana Load (0.0ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas" WHERE "cabanas"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/cabanas_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering cabanas/show.html.erb within layouts/application
+  [1m[36mReserva Load (0.2ms)[0m  [1m[34mSELECT "reservas".* FROM "reservas"[0m
+  ↳ app/views/cabanas/show.html.erb:54
+  Rendered /Users/fgomez/.rvm/gems/ruby-3.1.0/gems/simple_calendar-2.4.3/app/views/simple_calendar/_month_calendar.html.erb (Duration: 6.9ms | Allocations: 7685)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/cabanas/show.html.erb:77
+  Rendered cabanas/show.html.erb within layouts/application (Duration: 12.6ms | Allocations: 11263)
+  [1m[36mCabana Load (0.2ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 1.5ms | Allocations: 819)
+  Rendered layout layouts/application.html.erb (Duration: 17.2ms | Allocations: 14404)
+Completed 200 OK in 23ms (Views: 18.1ms | ActiveRecord: 1.0ms | Allocations: 17307)
+
+
+Started GET "/reservas/new" for ::1 at 2022-02-25 19:40:50 -0300
+Processing by ReservasController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:19:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering reservas/new.html.erb within layouts/application
+  Rendered reservas/_form.html.erb (Duration: 1.7ms | Allocations: 677)
+  Rendered reservas/new.html.erb within layouts/application (Duration: 1.9ms | Allocations: 776)
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 1.7ms | Allocations: 804)
+  Rendered layout layouts/application.html.erb (Duration: 6.5ms | Allocations: 3698)
+Completed 200 OK in 10ms (Views: 6.8ms | ActiveRecord: 0.4ms | Allocations: 4984)
+
+
+Started POST "/reservas" for ::1 at 2022-02-25 19:40:55 -0300
+Processing by ReservasController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "reserva"=>{"start_time"=>"2022-02-24", "end_time"=>"2022-02-26"}, "commit"=>"Reservar"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:36:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/reserva.rb:12:in `overlapping'
+  [1m[36mReserva Pluck (0.2ms)[0m  [1m[34mSELECT "reservas"."start_time", "reservas"."end_time", "reservas"."id_cabana" FROM "reservas"[0m
+  ↳ app/models/reserva.rb:12:in `overlapping'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/reservas_controller.rb:41:in `block in create'
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.6ms | Allocations: 3364)
+
+
+  
+ArgumentError (wrong number of arguments (given 1, expected 0)):
+  
+app/models/reserva.rb:13:in `block in overlapping'
+app/models/reserva.rb:12:in `each'
+app/models/reserva.rb:12:in `overlapping'
+app/controllers/reservas_controller.rb:41:in `block in create'
+app/controllers/reservas_controller.rb:40:in `create'
+Started POST "/reservas" for ::1 at 2022-02-25 19:42:36 -0300
+Processing by ReservasController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "reserva"=>{"start_time"=>"2022-02-24", "end_time"=>"2022-02-26"}, "commit"=>"Reservar"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:36:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/reserva.rb:12:in `overlapping'
+  [1m[36mReserva Pluck (0.2ms)[0m  [1m[34mSELECT "reservas"."start_time", "reservas"."end_time", "reservas"."id_cabana" FROM "reservas"[0m
+  ↳ app/models/reserva.rb:12:in `overlapping'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/reservas_controller.rb:41:in `block in create'
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 5.0ms | Allocations: 11941)
+
+
+  
+ArgumentError (wrong number of arguments (given 1, expected 0)):
+  
+app/models/reserva.rb:13:in `block in overlapping'
+app/models/reserva.rb:12:in `each'
+app/models/reserva.rb:12:in `overlapping'
+app/controllers/reservas_controller.rb:41:in `block in create'
+app/controllers/reservas_controller.rb:40:in `create'
+Started GET "/reservas/new" for ::1 at 2022-02-25 19:42:38 -0300
+Processing by ReservasController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:19:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering reservas/new.html.erb within layouts/application
+  Rendered reservas/_form.html.erb (Duration: 1.3ms | Allocations: 818)
+  Rendered reservas/new.html.erb within layouts/application (Duration: 1.5ms | Allocations: 940)
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 7.5ms | Allocations: 4001)
+  Rendered layout layouts/application.html.erb (Duration: 23.4ms | Allocations: 20309)
+Completed 200 OK in 27ms (Views: 22.1ms | ActiveRecord: 2.9ms | Allocations: 22232)
+
+
+Started POST "/reservas" for ::1 at 2022-02-25 19:42:39 -0300
+Processing by ReservasController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "reserva"=>{"start_time"=>"2022-02-24", "end_time"=>"2022-02-26"}, "commit"=>"Reservar"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:36:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/reserva.rb:12:in `overlapping'
+  [1m[36mReserva Pluck (0.2ms)[0m  [1m[34mSELECT "reservas"."start_time", "reservas"."end_time", "reservas"."id_cabana" FROM "reservas"[0m
+  ↳ app/models/reserva.rb:12:in `overlapping'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/reservas_controller.rb:41:in `block in create'
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.6ms | Allocations: 3454)
+
+
+  
+ArgumentError (wrong number of arguments (given 1, expected 0)):
+  
+app/models/reserva.rb:13:in `block in overlapping'
+app/models/reserva.rb:12:in `each'
+app/models/reserva.rb:12:in `overlapping'
+app/controllers/reservas_controller.rb:41:in `block in create'
+app/controllers/reservas_controller.rb:40:in `create'
+Started POST "/reservas" for ::1 at 2022-02-25 19:43:06 -0300
+Processing by ReservasController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "reserva"=>{"start_time"=>"2022-02-24", "end_time"=>"2022-02-26"}, "commit"=>"Reservar"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:36:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/reserva.rb:12:in `overlapping'
+  [1m[36mReserva Pluck (0.2ms)[0m  [1m[34mSELECT "reservas"."start_time", "reservas"."end_time", "reservas"."id_cabana" FROM "reservas"[0m
+  ↳ app/models/reserva.rb:12:in `overlapping'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/reservas_controller.rb:41:in `block in create'
+  Rendering layout layouts/application.html.erb
+  Rendering reservas/new.html.erb within layouts/application
+  Rendered reservas/_form.html.erb (Duration: 0.6ms | Allocations: 311)
+  Rendered reservas/new.html.erb within layouts/application (Duration: 0.7ms | Allocations: 422)
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 8.9ms | Allocations: 3982)
+  Rendered layout layouts/application.html.erb (Duration: 25.4ms | Allocations: 19772)
+Completed 422 Unprocessable Entity in 49ms (Views: 23.5ms | ActiveRecord: 8.0ms | Allocations: 32512)
+
+
+Started GET "/cabanas/2" for ::1 at 2022-02-25 19:43:07 -0300
+Processing by CabanasController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mCabana Load (0.2ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas" WHERE "cabanas"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/cabanas_controller.rb:7:in `show'
+  [1m[36mCACHE Cabana Load (0.0ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas" WHERE "cabanas"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/cabanas_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering cabanas/show.html.erb within layouts/application
+  [1m[36mReserva Load (0.2ms)[0m  [1m[34mSELECT "reservas".* FROM "reservas"[0m
+  ↳ app/views/cabanas/show.html.erb:54
+  Rendered /Users/fgomez/.rvm/gems/ruby-3.1.0/gems/simple_calendar-2.4.3/app/views/simple_calendar/_month_calendar.html.erb (Duration: 5.3ms | Allocations: 6923)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/cabanas/show.html.erb:77
+  Rendered cabanas/show.html.erb within layouts/application (Duration: 9.0ms | Allocations: 9185)
+  [1m[36mCabana Load (0.2ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 1.2ms | Allocations: 819)
+  Rendered layout layouts/application.html.erb (Duration: 13.0ms | Allocations: 12335)
+Completed 200 OK in 17ms (Views: 13.3ms | ActiveRecord: 0.9ms | Allocations: 15029)
+
+
+Started GET "/reservas/new" for ::1 at 2022-02-25 19:43:08 -0300
+Processing by ReservasController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:19:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering reservas/new.html.erb within layouts/application
+  Rendered reservas/_form.html.erb (Duration: 1.9ms | Allocations: 676)
+  Rendered reservas/new.html.erb within layouts/application (Duration: 2.3ms | Allocations: 775)
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 1.7ms | Allocations: 804)
+  Rendered layout layouts/application.html.erb (Duration: 7.1ms | Allocations: 3707)
+Completed 200 OK in 11ms (Views: 7.4ms | ActiveRecord: 0.5ms | Allocations: 4993)
+
+
+Started POST "/reservas" for ::1 at 2022-02-25 19:43:14 -0300
+Processing by ReservasController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "reserva"=>{"start_time"=>"2022-02-24", "end_time"=>"2022-02-26"}, "commit"=>"Reservar"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:36:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/reserva.rb:12:in `overlapping'
+  [1m[36mReserva Pluck (0.2ms)[0m  [1m[34mSELECT "reservas"."start_time", "reservas"."end_time", "reservas"."id_cabana" FROM "reservas"[0m
+  ↳ app/models/reserva.rb:12:in `overlapping'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/reservas_controller.rb:41:in `block in create'
+  Rendering layout layouts/application.html.erb
+  Rendering reservas/new.html.erb within layouts/application
+  Rendered reservas/_form.html.erb (Duration: 0.4ms | Allocations: 173)
+  Rendered reservas/new.html.erb within layouts/application (Duration: 0.7ms | Allocations: 272)
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 1.4ms | Allocations: 804)
+  Rendered layout layouts/application.html.erb (Duration: 5.7ms | Allocations: 3194)
+Completed 422 Unprocessable Entity in 12ms (Views: 5.8ms | ActiveRecord: 0.9ms | Allocations: 6673)
+
+
+Started GET "/cabanas/2" for ::1 at 2022-02-25 19:43:18 -0300
+Processing by CabanasController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mCabana Load (0.1ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas" WHERE "cabanas"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/cabanas_controller.rb:7:in `show'
+  [1m[36mCACHE Cabana Load (0.0ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas" WHERE "cabanas"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/cabanas_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering cabanas/show.html.erb within layouts/application
+  [1m[36mReserva Load (0.2ms)[0m  [1m[34mSELECT "reservas".* FROM "reservas"[0m
+  ↳ app/views/cabanas/show.html.erb:54
+  Rendered /Users/fgomez/.rvm/gems/ruby-3.1.0/gems/simple_calendar-2.4.3/app/views/simple_calendar/_month_calendar.html.erb (Duration: 6.0ms | Allocations: 6246)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/cabanas/show.html.erb:77
+  Rendered cabanas/show.html.erb within layouts/application (Duration: 9.4ms | Allocations: 8150)
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 1.3ms | Allocations: 804)
+  Rendered layout layouts/application.html.erb (Duration: 14.4ms | Allocations: 11072)
+Completed 200 OK in 17ms (Views: 14.1ms | ActiveRecord: 0.9ms | Allocations: 12350)
+
+
+Started GET "/" for ::1 at 2022-02-25 19:44:02 -0300
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:8
+  Rendered pages/home.html.erb within layouts/application (Duration: 3.3ms | Allocations: 1833)
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 1.3ms | Allocations: 821)
+  Rendered layout layouts/application.html.erb (Duration: 8.0ms | Allocations: 5003)
+Completed 200 OK in 11ms (Views: 9.1ms | ActiveRecord: 0.4ms | Allocations: 6138)
+
+
+Started GET "/cabanas/" for ::1 at 2022-02-25 19:44:03 -0300
+Processing by CabanasController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cabanas/index.html.erb within layouts/application
+  [1m[36mCabana Load (0.2ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/cabanas/index.html.erb:3
+  Rendered cabanas/index.html.erb within layouts/application (Duration: 3.1ms | Allocations: 1239)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:15
+  Rendered shared/_navbar.html.erb (Duration: 1.7ms | Allocations: 968)
+  Rendered layout layouts/application.html.erb (Duration: 8.5ms | Allocations: 4512)
+Completed 200 OK in 10ms (Views: 8.4ms | ActiveRecord: 0.5ms | Allocations: 4893)
+
+
+Started GET "/cabanas/1" for ::1 at 2022-02-25 19:44:04 -0300
+Processing by CabanasController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCabana Load (0.2ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas" WHERE "cabanas"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cabanas_controller.rb:7:in `show'
+  [1m[36mCACHE Cabana Load (0.0ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas" WHERE "cabanas"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cabanas_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering cabanas/show.html.erb within layouts/application
+  [1m[36mReserva Load (0.2ms)[0m  [1m[34mSELECT "reservas".* FROM "reservas"[0m
+  ↳ app/views/cabanas/show.html.erb:54
+  Rendered /Users/fgomez/.rvm/gems/ruby-3.1.0/gems/simple_calendar-2.4.3/app/views/simple_calendar/_month_calendar.html.erb (Duration: 5.5ms | Allocations: 6298)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/cabanas/show.html.erb:77
+  Rendered cabanas/show.html.erb within layouts/application (Duration: 9.6ms | Allocations: 8242)
+  [1m[36mCabana Load (0.4ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 1.7ms | Allocations: 804)
+  Rendered layout layouts/application.html.erb (Duration: 14.7ms | Allocations: 11164)
+Completed 200 OK in 17ms (Views: 14.2ms | ActiveRecord: 1.0ms | Allocations: 12444)
+
+
+Started GET "/" for ::1 at 2022-02-25 19:44:54 -0300
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:8
+  Rendered pages/home.html.erb within layouts/application (Duration: 2.0ms | Allocations: 1088)
+  [1m[36mCabana Load (0.2ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 2.1ms | Allocations: 805)
+  Rendered layout layouts/application.html.erb (Duration: 7.7ms | Allocations: 4038)
+Completed 200 OK in 9ms (Views: 7.6ms | ActiveRecord: 0.4ms | Allocations: 4332)
+
+
+Started GET "/reservas" for ::1 at 2022-02-25 19:44:57 -0300
+Processing by ReservasController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering reservas/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/reservas/index.html.erb:2
+  [1m[36mReserva Load (0.2ms)[0m  [1m[34mSELECT "reservas".* FROM "reservas"[0m
+  ↳ app/views/reservas/index.html.erb:6
+  Rendered reservas/_reserva.html.erb (Duration: 0.7ms | Allocations: 349)
+  Rendered reservas/index.html.erb within layouts/application (Duration: 5.3ms | Allocations: 2665)
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 1.3ms | Allocations: 804)
+  Rendered layout layouts/application.html.erb (Duration: 9.7ms | Allocations: 5595)
+Completed 200 OK in 11ms (Views: 10.1ms | ActiveRecord: 0.6ms | Allocations: 5977)
+
+
+Started GET "/reservas/2" for ::1 at 2022-02-25 19:45:10 -0300
+Processing by ReservasController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mReserva Load (0.3ms)[0m  [1m[34mSELECT "reservas".* FROM "reservas" WHERE "reservas"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:77:in `set_reserva'
+  Rendering layout layouts/application.html.erb
+  Rendering reservas/show.html.erb within layouts/application
+  Rendered reservas/_reserva.html.erb (Duration: 0.1ms | Allocations: 44)
+  Rendered reservas/show.html.erb within layouts/application (Duration: 2.3ms | Allocations: 831)
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:15
+  Rendered shared/_navbar.html.erb (Duration: 2.8ms | Allocations: 1613)
+  Rendered layout layouts/application.html.erb (Duration: 8.2ms | Allocations: 4562)
+Completed 200 OK in 12ms (Views: 8.2ms | ActiveRecord: 0.8ms | Allocations: 6033)
+
+
+Started DELETE "/reservas/2" for ::1 at 2022-02-25 19:45:11 -0300
+Processing by ReservasController#destroy as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"2"}
+  [1m[36mReserva Load (0.2ms)[0m  [1m[34mSELECT "reservas".* FROM "reservas" WHERE "reservas"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:77:in `set_reserva'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/reservas_controller.rb:66:in `destroy'
+  [1m[36mReserva Destroy (0.3ms)[0m  [1m[31mDELETE FROM "reservas" WHERE "reservas"."id" = $1[0m  [["id", 2]]
+  ↳ app/controllers/reservas_controller.rb:66:in `destroy'
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/reservas_controller.rb:66:in `destroy'
+Redirected to http://localhost:3000/reservas
+Completed 302 Found in 7ms (ActiveRecord: 2.5ms | Allocations: 2555)
+
+
+Started GET "/reservas" for ::1 at 2022-02-25 19:45:11 -0300
+Processing by ReservasController#index as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering reservas/index.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/reservas/index.html.erb:2
+  [1m[36mReserva Load (0.2ms)[0m  [1m[34mSELECT "reservas".* FROM "reservas"[0m
+  ↳ app/views/reservas/index.html.erb:6
+  Rendered reservas/index.html.erb within layouts/application (Duration: 3.0ms | Allocations: 1627)
+  [1m[36mCabana Load (0.2ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 1.1ms | Allocations: 805)
+  Rendered layout layouts/application.html.erb (Duration: 7.6ms | Allocations: 4608)
+Completed 200 OK in 9ms (Views: 7.4ms | ActiveRecord: 0.6ms | Allocations: 4958)
+
+
+Started GET "/reservas/new" for ::1 at 2022-02-25 19:45:12 -0300
+Processing by ReservasController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:19:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering reservas/new.html.erb within layouts/application
+  Rendered reservas/_form.html.erb (Duration: 1.6ms | Allocations: 657)
+  Rendered reservas/new.html.erb within layouts/application (Duration: 1.9ms | Allocations: 756)
+  [1m[36mCabana Load (0.2ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 1.9ms | Allocations: 804)
+  Rendered layout layouts/application.html.erb (Duration: 7.4ms | Allocations: 3678)
+Completed 200 OK in 11ms (Views: 7.6ms | ActiveRecord: 0.4ms | Allocations: 4935)
+
+
+Started POST "/reservas" for ::1 at 2022-02-25 19:45:18 -0300
+Processing by ReservasController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "reserva"=>{"start_time"=>"2022-02-24", "end_time"=>"2022-02-26"}, "commit"=>"Reservar"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:36:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/reserva.rb:12:in `overlapping'
+  [1m[36mReserva Pluck (0.2ms)[0m  [1m[34mSELECT "reservas"."start_time", "reservas"."end_time", "reservas"."id_cabana" FROM "reservas"[0m
+  ↳ app/models/reserva.rb:12:in `overlapping'
+  [1m[36mReserva Create (0.3ms)[0m  [1m[32mINSERT INTO "reservas" ("id_usuario", "id_cabana", "start_time", "end_time", "nombre_cabana", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["id_usuario", 1], ["id_cabana", 1], ["start_time", "2022-02-24"], ["end_time", "2022-02-26"], ["nombre_cabana", "LesPaul"], ["created_at", "2022-02-25 22:45:18.628220"], ["updated_at", "2022-02-25 22:45:18.628220"]]
+  ↳ app/controllers/reservas_controller.rb:41:in `block in create'
+  [1m[36mTRANSACTION (6.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/reservas_controller.rb:41:in `block in create'
+Redirected to http://localhost:3000/reservas/3
+Completed 302 Found in 13ms (ActiveRecord: 6.7ms | Allocations: 3602)
+
+
+Started GET "/reservas/3" for ::1 at 2022-02-25 19:45:18 -0300
+Processing by ReservasController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mReserva Load (0.2ms)[0m  [1m[34mSELECT "reservas".* FROM "reservas" WHERE "reservas"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:77:in `set_reserva'
+  Rendering layout layouts/application.html.erb
+  Rendering reservas/show.html.erb within layouts/application
+  Rendered reservas/_reserva.html.erb (Duration: 0.1ms | Allocations: 44)
+  Rendered reservas/show.html.erb within layouts/application (Duration: 1.9ms | Allocations: 509)
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:15
+  Rendered shared/_navbar.html.erb (Duration: 2.6ms | Allocations: 1613)
+  Rendered layout layouts/application.html.erb (Duration: 8.1ms | Allocations: 4240)
+Completed 200 OK in 10ms (Views: 8.0ms | ActiveRecord: 0.7ms | Allocations: 5055)
+
+
+Started GET "/" for ::1 at 2022-02-25 19:45:41 -0300
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:8
+  Rendered pages/home.html.erb within layouts/application (Duration: 1.8ms | Allocations: 1061)
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 1.4ms | Allocations: 805)
+  Rendered layout layouts/application.html.erb (Duration: 6.6ms | Allocations: 3996)
+Completed 200 OK in 8ms (Views: 7.0ms | ActiveRecord: 0.4ms | Allocations: 4287)
+
+
+Started GET "/cabanas/" for ::1 at 2022-02-25 19:45:42 -0300
+Processing by CabanasController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cabanas/index.html.erb within layouts/application
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/cabanas/index.html.erb:3
+  Rendered cabanas/index.html.erb within layouts/application (Duration: 10.0ms | Allocations: 786)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:15
+  Rendered shared/_navbar.html.erb (Duration: 2.2ms | Allocations: 968)
+  Rendered layout layouts/application.html.erb (Duration: 22.3ms | Allocations: 4071)
+Completed 200 OK in 23ms (Views: 22.2ms | ActiveRecord: 0.6ms | Allocations: 4362)
+
+
+Started GET "/cabanas/1" for ::1 at 2022-02-25 19:45:44 -0300
+Processing by CabanasController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCabana Load (0.2ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas" WHERE "cabanas"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cabanas_controller.rb:7:in `show'
+  [1m[36mCACHE Cabana Load (0.0ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas" WHERE "cabanas"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cabanas_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering cabanas/show.html.erb within layouts/application
+  [1m[36mReserva Load (0.2ms)[0m  [1m[34mSELECT "reservas".* FROM "reservas"[0m
+  ↳ app/views/cabanas/show.html.erb:54
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/cabanas/show.html.erb:58
+  Rendered /Users/fgomez/.rvm/gems/ruby-3.1.0/gems/simple_calendar-2.4.3/app/views/simple_calendar/_month_calendar.html.erb (Duration: 8.9ms | Allocations: 7276)
+  Rendered cabanas/show.html.erb within layouts/application (Duration: 10.3ms | Allocations: 8216)
+  [1m[36mCabana Load (0.4ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 2.5ms | Allocations: 804)
+  Rendered layout layouts/application.html.erb (Duration: 15.3ms | Allocations: 11138)
+Completed 200 OK in 19ms (Views: 14.8ms | ActiveRecord: 1.1ms | Allocations: 12403)
+
+
+Started GET "/reservas/new" for ::1 at 2022-02-25 19:46:56 -0300
+Processing by ReservasController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:19:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering reservas/new.html.erb within layouts/application
+  Rendered reservas/_form.html.erb (Duration: 1.3ms | Allocations: 837)
+  Rendered reservas/new.html.erb within layouts/application (Duration: 1.6ms | Allocations: 959)
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 8.2ms | Allocations: 3982)
+  Rendered layout layouts/application.html.erb (Duration: 28.6ms | Allocations: 20293)
+Completed 200 OK in 50ms (Views: 27.1ms | ActiveRecord: 7.3ms | Allocations: 30557)
+
+
+Started POST "/reservas" for ::1 at 2022-02-25 19:47:06 -0300
+Processing by ReservasController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "reserva"=>{"start_time"=>"2022-02-28", "end_time"=>"2022-03-01"}, "commit"=>"Reservar"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:36:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/reserva.rb:12:in `overlapping'
+  [1m[36mReserva Pluck (0.2ms)[0m  [1m[34mSELECT "reservas"."start_time", "reservas"."end_time", "reservas"."id_cabana" FROM "reservas"[0m
+  ↳ app/models/reserva.rb:12:in `overlapping'
+  [1m[36mReserva Create (0.4ms)[0m  [1m[32mINSERT INTO "reservas" ("id_usuario", "id_cabana", "start_time", "end_time", "nombre_cabana", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["id_usuario", 1], ["id_cabana", 1], ["start_time", "2022-02-28"], ["end_time", "2022-03-01"], ["nombre_cabana", "LesPaul"], ["created_at", "2022-02-25 22:47:06.350224"], ["updated_at", "2022-02-25 22:47:06.350224"]]
+  ↳ app/controllers/reservas_controller.rb:41:in `block in create'
+  [1m[36mTRANSACTION (6.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/reservas_controller.rb:41:in `block in create'
+Redirected to http://localhost:3000/reservas/4
+Completed 302 Found in 15ms (ActiveRecord: 7.0ms | Allocations: 4051)
+
+
+Started GET "/reservas/4" for ::1 at 2022-02-25 19:47:06 -0300
+Processing by ReservasController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mReserva Load (0.1ms)[0m  [1m[34mSELECT "reservas".* FROM "reservas" WHERE "reservas"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:77:in `set_reserva'
+  Rendering layout layouts/application.html.erb
+  Rendering reservas/show.html.erb within layouts/application
+  Rendered reservas/_reserva.html.erb (Duration: 0.1ms | Allocations: 55)
+  Rendered reservas/show.html.erb within layouts/application (Duration: 0.9ms | Allocations: 603)
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:15
+  Rendered shared/_navbar.html.erb (Duration: 12.3ms | Allocations: 1613)
+  Rendered layout layouts/application.html.erb (Duration: 15.8ms | Allocations: 4334)
+Completed 200 OK in 19ms (Views: 15.8ms | ActiveRecord: 0.6ms | Allocations: 5761)
+
+
+Started DELETE "/reservas/4" for ::1 at 2022-02-25 19:47:52 -0300
+Processing by ReservasController#destroy as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"4"}
+  [1m[36mReserva Load (0.2ms)[0m  [1m[34mSELECT "reservas".* FROM "reservas" WHERE "reservas"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:77:in `set_reserva'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/reservas_controller.rb:66:in `destroy'
+  [1m[36mReserva Destroy (0.3ms)[0m  [1m[31mDELETE FROM "reservas" WHERE "reservas"."id" = $1[0m  [["id", 4]]
+  ↳ app/controllers/reservas_controller.rb:66:in `destroy'
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/reservas_controller.rb:66:in `destroy'
+Redirected to http://localhost:3000/reservas
+Completed 302 Found in 7ms (ActiveRecord: 2.6ms | Allocations: 2492)
+
+
+Started GET "/reservas" for ::1 at 2022-02-25 19:47:52 -0300
+Processing by ReservasController#index as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering reservas/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/reservas/index.html.erb:2
+  [1m[36mReserva Load (0.2ms)[0m  [1m[34mSELECT "reservas".* FROM "reservas"[0m
+  ↳ app/views/reservas/index.html.erb:6
+  Rendered reservas/_reserva.html.erb (Duration: 0.1ms | Allocations: 44)
+  Rendered reservas/index.html.erb within layouts/application (Duration: 3.2ms | Allocations: 1797)
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 1.5ms | Allocations: 804)
+  Rendered layout layouts/application.html.erb (Duration: 7.5ms | Allocations: 4727)
+Completed 200 OK in 8ms (Views: 7.2ms | ActiveRecord: 0.7ms | Allocations: 5036)
+
+
+Started GET "/reservas/3" for ::1 at 2022-02-25 19:47:53 -0300
+Processing by ReservasController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mReserva Load (0.2ms)[0m  [1m[34mSELECT "reservas".* FROM "reservas" WHERE "reservas"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:77:in `set_reserva'
+  Rendering layout layouts/application.html.erb
+  Rendering reservas/show.html.erb within layouts/application
+  Rendered reservas/_reserva.html.erb (Duration: 0.1ms | Allocations: 44)
+  Rendered reservas/show.html.erb within layouts/application (Duration: 0.8ms | Allocations: 467)
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:15
+  Rendered shared/_navbar.html.erb (Duration: 2.5ms | Allocations: 1613)
+  Rendered layout layouts/application.html.erb (Duration: 5.9ms | Allocations: 4198)
+Completed 200 OK in 8ms (Views: 5.9ms | ActiveRecord: 0.6ms | Allocations: 5016)
+
+
+Started DELETE "/reservas/3" for ::1 at 2022-02-25 19:47:54 -0300
+Processing by ReservasController#destroy as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"3"}
+  [1m[36mReserva Load (0.2ms)[0m  [1m[34mSELECT "reservas".* FROM "reservas" WHERE "reservas"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:77:in `set_reserva'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/reservas_controller.rb:66:in `destroy'
+  [1m[36mReserva Destroy (0.2ms)[0m  [1m[31mDELETE FROM "reservas" WHERE "reservas"."id" = $1[0m  [["id", 3]]
+  ↳ app/controllers/reservas_controller.rb:66:in `destroy'
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/reservas_controller.rb:66:in `destroy'
+Redirected to http://localhost:3000/reservas
+Completed 302 Found in 7ms (ActiveRecord: 2.6ms | Allocations: 2468)
+
+
+Started GET "/reservas" for ::1 at 2022-02-25 19:47:54 -0300
+Processing by ReservasController#index as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering reservas/index.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/reservas/index.html.erb:2
+  [1m[36mReserva Load (0.2ms)[0m  [1m[34mSELECT "reservas".* FROM "reservas"[0m
+  ↳ app/views/reservas/index.html.erb:6
+  Rendered reservas/index.html.erb within layouts/application (Duration: 3.1ms | Allocations: 1640)
+  [1m[36mCabana Load (0.2ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 1.1ms | Allocations: 805)
+  Rendered layout layouts/application.html.erb (Duration: 6.9ms | Allocations: 4582)
+Completed 200 OK in 8ms (Views: 6.7ms | ActiveRecord: 0.6ms | Allocations: 4889)
+
+
+Started GET "/reservas/new" for ::1 at 2022-02-25 19:47:54 -0300
+Processing by ReservasController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:19:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering reservas/new.html.erb within layouts/application
+  Rendered reservas/_form.html.erb (Duration: 1.1ms | Allocations: 613)
+  Rendered reservas/new.html.erb within layouts/application (Duration: 1.3ms | Allocations: 712)
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 1.4ms | Allocations: 804)
+  Rendered layout layouts/application.html.erb (Duration: 5.2ms | Allocations: 3639)
+Completed 200 OK in 9ms (Views: 5.5ms | ActiveRecord: 0.4ms | Allocations: 4903)
+
+
+Started POST "/reservas" for ::1 at 2022-02-25 19:48:07 -0300
+Processing by ReservasController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "reserva"=>{"start_time"=>"2022-02-23", "end_time"=>"2022-02-24"}, "commit"=>"Reservar"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:36:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/reserva.rb:12:in `overlapping'
+  [1m[36mReserva Pluck (0.2ms)[0m  [1m[34mSELECT "reservas"."start_time", "reservas"."end_time", "reservas"."id_cabana" FROM "reservas"[0m
+  ↳ app/models/reserva.rb:12:in `overlapping'
+  [1m[36mReserva Create (0.3ms)[0m  [1m[32mINSERT INTO "reservas" ("id_usuario", "id_cabana", "start_time", "end_time", "nombre_cabana", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["id_usuario", 1], ["id_cabana", 1], ["start_time", "2022-02-23"], ["end_time", "2022-02-24"], ["nombre_cabana", "LesPaul"], ["created_at", "2022-02-25 22:48:07.336835"], ["updated_at", "2022-02-25 22:48:07.336835"]]
+  ↳ app/controllers/reservas_controller.rb:41:in `block in create'
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/reservas_controller.rb:41:in `block in create'
+Redirected to http://localhost:3000/reservas/5
+Completed 302 Found in 9ms (ActiveRecord: 2.6ms | Allocations: 3511)
+
+
+Started GET "/reservas/5" for ::1 at 2022-02-25 19:48:07 -0300
+Processing by ReservasController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mReserva Load (0.2ms)[0m  [1m[34mSELECT "reservas".* FROM "reservas" WHERE "reservas"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:77:in `set_reserva'
+  Rendering layout layouts/application.html.erb
+  Rendering reservas/show.html.erb within layouts/application
+  Rendered reservas/_reserva.html.erb (Duration: 0.1ms | Allocations: 44)
+  Rendered reservas/show.html.erb within layouts/application (Duration: 1.1ms | Allocations: 494)
+  [1m[36mCabana Load (0.2ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:15
+  Rendered shared/_navbar.html.erb (Duration: 2.9ms | Allocations: 1613)
+  Rendered layout layouts/application.html.erb (Duration: 7.8ms | Allocations: 4231)
+Completed 200 OK in 10ms (Views: 7.9ms | ActiveRecord: 0.6ms | Allocations: 5046)
+
+
+Started GET "/" for ::1 at 2022-02-25 19:49:04 -0300
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:8
+  Rendered pages/home.html.erb within layouts/application (Duration: 2.1ms | Allocations: 1354)
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 1.6ms | Allocations: 821)
+  Rendered layout layouts/application.html.erb (Duration: 6.6ms | Allocations: 4524)
+Completed 200 OK in 9ms (Views: 7.4ms | ActiveRecord: 0.4ms | Allocations: 5570)
+
+
+Started GET "/cabanas/" for ::1 at 2022-02-25 19:49:05 -0300
+Processing by CabanasController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cabanas/index.html.erb within layouts/application
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/cabanas/index.html.erb:3
+  Rendered cabanas/index.html.erb within layouts/application (Duration: 2.0ms | Allocations: 947)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:15
+  Rendered shared/_navbar.html.erb (Duration: 2.0ms | Allocations: 1066)
+  Rendered layout layouts/application.html.erb (Duration: 7.6ms | Allocations: 4601)
+Completed 200 OK in 9ms (Views: 8.3ms | ActiveRecord: 0.5ms | Allocations: 5578)
+
+
+Started GET "/cabanas/2" for ::1 at 2022-02-25 19:49:06 -0300
+Processing by CabanasController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mCabana Load (0.2ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas" WHERE "cabanas"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/cabanas_controller.rb:7:in `show'
+  [1m[36mCACHE Cabana Load (0.0ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas" WHERE "cabanas"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/cabanas_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering cabanas/show.html.erb within layouts/application
+  [1m[36mReserva Load (0.3ms)[0m  [1m[34mSELECT "reservas".* FROM "reservas"[0m
+  ↳ app/views/cabanas/show.html.erb:54
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/cabanas/show.html.erb:58
+  Rendered /Users/fgomez/.rvm/gems/ruby-3.1.0/gems/simple_calendar-2.4.3/app/views/simple_calendar/_month_calendar.html.erb (Duration: 8.4ms | Allocations: 7895)
+  Rendered cabanas/show.html.erb within layouts/application (Duration: 10.0ms | Allocations: 8898)
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 1.6ms | Allocations: 804)
+  Rendered layout layouts/application.html.erb (Duration: 14.9ms | Allocations: 11826)
+Completed 200 OK in 18ms (Views: 14.4ms | ActiveRecord: 1.0ms | Allocations: 13708)
+
+
+Started GET "/reservas/new" for ::1 at 2022-02-25 19:49:07 -0300
+Processing by ReservasController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:19:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering reservas/new.html.erb within layouts/application
+  Rendered reservas/_form.html.erb (Duration: 1.6ms | Allocations: 664)
+  Rendered reservas/new.html.erb within layouts/application (Duration: 1.8ms | Allocations: 763)
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 1.4ms | Allocations: 804)
+  Rendered layout layouts/application.html.erb (Duration: 6.0ms | Allocations: 3685)
+Completed 200 OK in 9ms (Views: 6.1ms | ActiveRecord: 0.5ms | Allocations: 4928)
+
+
+Started POST "/reservas" for ::1 at 2022-02-25 19:49:12 -0300
+Processing by ReservasController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "reserva"=>{"start_time"=>"2022-02-21", "end_time"=>"2022-02-22"}, "commit"=>"Reservar"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:36:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/reserva.rb:12:in `overlapping'
+  [1m[36mReserva Pluck (0.2ms)[0m  [1m[34mSELECT "reservas"."start_time", "reservas"."end_time", "reservas"."id_cabana" FROM "reservas"[0m
+  ↳ app/models/reserva.rb:12:in `overlapping'
+  [1m[36mReserva Create (0.2ms)[0m  [1m[32mINSERT INTO "reservas" ("id_usuario", "id_cabana", "start_time", "end_time", "nombre_cabana", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["id_usuario", 1], ["id_cabana", 2], ["start_time", "2022-02-21"], ["end_time", "2022-02-22"], ["nombre_cabana", "Telecaster"], ["created_at", "2022-02-25 22:49:12.895018"], ["updated_at", "2022-02-25 22:49:12.895018"]]
+  ↳ app/controllers/reservas_controller.rb:41:in `block in create'
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/reservas_controller.rb:41:in `block in create'
+Redirected to http://localhost:3000/reservas/6
+Completed 302 Found in 8ms (ActiveRecord: 2.6ms | Allocations: 3647)
+
+
+Started GET "/reservas/6" for ::1 at 2022-02-25 19:49:12 -0300
+Processing by ReservasController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mReserva Load (0.2ms)[0m  [1m[34mSELECT "reservas".* FROM "reservas" WHERE "reservas"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:77:in `set_reserva'
+  Rendering layout layouts/application.html.erb
+  Rendering reservas/show.html.erb within layouts/application
+  Rendered reservas/_reserva.html.erb (Duration: 0.1ms | Allocations: 46)
+  Rendered reservas/show.html.erb within layouts/application (Duration: 0.8ms | Allocations: 496)
+  [1m[36mCabana Load (0.2ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:15
+  Rendered shared/_navbar.html.erb (Duration: 2.6ms | Allocations: 1613)
+  Rendered layout layouts/application.html.erb (Duration: 6.2ms | Allocations: 4227)
+Completed 200 OK in 9ms (Views: 6.3ms | ActiveRecord: 0.6ms | Allocations: 5043)
+
+
+Started DELETE "/reservas/6" for ::1 at 2022-02-25 19:49:28 -0300
+Processing by ReservasController#destroy as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"6"}
+  [1m[36mReserva Load (0.2ms)[0m  [1m[34mSELECT "reservas".* FROM "reservas" WHERE "reservas"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:77:in `set_reserva'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/reservas_controller.rb:66:in `destroy'
+  [1m[36mReserva Destroy (0.2ms)[0m  [1m[31mDELETE FROM "reservas" WHERE "reservas"."id" = $1[0m  [["id", 6]]
+  ↳ app/controllers/reservas_controller.rb:66:in `destroy'
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/reservas_controller.rb:66:in `destroy'
+Redirected to http://localhost:3000/reservas
+Completed 302 Found in 6ms (ActiveRecord: 2.4ms | Allocations: 2471)
+
+
+Started GET "/reservas" for ::1 at 2022-02-25 19:49:28 -0300
+Processing by ReservasController#index as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering reservas/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/reservas/index.html.erb:2
+  [1m[36mReserva Load (0.2ms)[0m  [1m[34mSELECT "reservas".* FROM "reservas"[0m
+  ↳ app/views/reservas/index.html.erb:6
+  Rendered reservas/_reserva.html.erb (Duration: 0.1ms | Allocations: 44)
+  Rendered reservas/index.html.erb within layouts/application (Duration: 3.5ms | Allocations: 1809)
+  [1m[36mCabana Load (0.2ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 1.1ms | Allocations: 804)
+  Rendered layout layouts/application.html.erb (Duration: 7.4ms | Allocations: 4739)
+Completed 200 OK in 8ms (Views: 7.1ms | ActiveRecord: 0.6ms | Allocations: 5046)
+
+
+Started GET "/reservas/5" for ::1 at 2022-02-25 19:49:30 -0300
+Processing by ReservasController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mReserva Load (0.2ms)[0m  [1m[34mSELECT "reservas".* FROM "reservas" WHERE "reservas"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:77:in `set_reserva'
+  Rendering layout layouts/application.html.erb
+  Rendering reservas/show.html.erb within layouts/application
+  Rendered reservas/_reserva.html.erb (Duration: 0.1ms | Allocations: 44)
+  Rendered reservas/show.html.erb within layouts/application (Duration: 0.8ms | Allocations: 500)
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:15
+  Rendered shared/_navbar.html.erb (Duration: 2.6ms | Allocations: 1613)
+  Rendered layout layouts/application.html.erb (Duration: 6.2ms | Allocations: 4231)
+Completed 200 OK in 9ms (Views: 6.3ms | ActiveRecord: 0.6ms | Allocations: 5049)
+
+
+Started DELETE "/reservas/5" for ::1 at 2022-02-25 19:49:31 -0300
+Processing by ReservasController#destroy as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"5"}
+  [1m[36mReserva Load (0.2ms)[0m  [1m[34mSELECT "reservas".* FROM "reservas" WHERE "reservas"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:77:in `set_reserva'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/reservas_controller.rb:66:in `destroy'
+  [1m[36mReserva Destroy (0.3ms)[0m  [1m[31mDELETE FROM "reservas" WHERE "reservas"."id" = $1[0m  [["id", 5]]
+  ↳ app/controllers/reservas_controller.rb:66:in `destroy'
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/reservas_controller.rb:66:in `destroy'
+Redirected to http://localhost:3000/reservas
+Completed 302 Found in 7ms (ActiveRecord: 2.7ms | Allocations: 2462)
+
+
+Started GET "/reservas" for ::1 at 2022-02-25 19:49:31 -0300
+Processing by ReservasController#index as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering reservas/index.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/reservas/index.html.erb:2
+  [1m[36mReserva Load (0.2ms)[0m  [1m[34mSELECT "reservas".* FROM "reservas"[0m
+  ↳ app/views/reservas/index.html.erb:6
+  Rendered reservas/index.html.erb within layouts/application (Duration: 3.4ms | Allocations: 1617)
+  [1m[36mCabana Load (0.2ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 1.2ms | Allocations: 805)
+  Rendered layout layouts/application.html.erb (Duration: 7.6ms | Allocations: 4570)
+Completed 200 OK in 8ms (Views: 7.3ms | ActiveRecord: 0.6ms | Allocations: 4879)
+
+
+Started GET "/reservas/new" for ::1 at 2022-02-25 19:49:32 -0300
+Processing by ReservasController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:19:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering reservas/new.html.erb within layouts/application
+  Rendered reservas/_form.html.erb (Duration: 1.2ms | Allocations: 613)
+  Rendered reservas/new.html.erb within layouts/application (Duration: 1.4ms | Allocations: 712)
+  [1m[36mCabana Load (0.2ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 1.3ms | Allocations: 804)
+  Rendered layout layouts/application.html.erb (Duration: 5.5ms | Allocations: 3634)
+Completed 200 OK in 9ms (Views: 5.6ms | ActiveRecord: 0.4ms | Allocations: 4871)
+
+
+Started POST "/reservas" for ::1 at 2022-02-25 19:49:33 -0300
+Processing by ReservasController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "reserva"=>{"start_time"=>"", "end_time"=>""}, "commit"=>"Reservar"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:36:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering reservas/new.html.erb within layouts/application
+  Rendered reservas/_form.html.erb (Duration: 0.4ms | Allocations: 175)
+  Rendered reservas/new.html.erb within layouts/application (Duration: 0.6ms | Allocations: 274)
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 1.7ms | Allocations: 806)
+  Rendered layout layouts/application.html.erb (Duration: 6.0ms | Allocations: 3198)
+Completed 422 Unprocessable Entity in 10ms (Views: 6.1ms | ActiveRecord: 0.5ms | Allocations: 5082)
+
+
+Started GET "/cabanas/2" for ::1 at 2022-02-25 19:49:58 -0300
+Processing by CabanasController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mCabana Load (0.2ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas" WHERE "cabanas"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/cabanas_controller.rb:7:in `show'
+  [1m[36mCACHE Cabana Load (0.0ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas" WHERE "cabanas"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/cabanas_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering cabanas/show.html.erb within layouts/application
+  [1m[36mReserva Load (0.2ms)[0m  [1m[34mSELECT "reservas".* FROM "reservas"[0m
+  ↳ app/views/cabanas/show.html.erb:54
+  Rendered /Users/fgomez/.rvm/gems/ruby-3.1.0/gems/simple_calendar-2.4.3/app/views/simple_calendar/_month_calendar.html.erb (Duration: 5.0ms | Allocations: 6246)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/cabanas/show.html.erb:77
+  Rendered cabanas/show.html.erb within layouts/application (Duration: 8.1ms | Allocations: 8104)
+  [1m[36mCabana Load (0.2ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 1.2ms | Allocations: 804)
+  Rendered layout layouts/application.html.erb (Duration: 12.3ms | Allocations: 11026)
+Completed 200 OK in 15ms (Views: 12.3ms | ActiveRecord: 0.8ms | Allocations: 12291)
+
+
+Started GET "/reservas/new" for ::1 at 2022-02-25 19:49:59 -0300
+Processing by ReservasController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:19:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering reservas/new.html.erb within layouts/application
+  Rendered reservas/_form.html.erb (Duration: 1.3ms | Allocations: 613)
+  Rendered reservas/new.html.erb within layouts/application (Duration: 1.5ms | Allocations: 712)
+  [1m[36mCabana Load (0.4ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 2.5ms | Allocations: 804)
+  Rendered layout layouts/application.html.erb (Duration: 7.1ms | Allocations: 3634)
+Completed 200 OK in 10ms (Views: 7.3ms | ActiveRecord: 0.6ms | Allocations: 4889)
+
+
+Started POST "/reservas" for ::1 at 2022-02-25 19:50:05 -0300
+Processing by ReservasController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "reserva"=>{"start_time"=>"2022-02-12", "end_time"=>"2022-02-13"}, "commit"=>"Reservar"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:36:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/reserva.rb:12:in `overlapping'
+  [1m[36mReserva Pluck (0.2ms)[0m  [1m[34mSELECT "reservas"."start_time", "reservas"."end_time", "reservas"."id_cabana" FROM "reservas"[0m
+  ↳ app/models/reserva.rb:12:in `overlapping'
+  [1m[36mReserva Create (0.2ms)[0m  [1m[32mINSERT INTO "reservas" ("id_usuario", "id_cabana", "start_time", "end_time", "nombre_cabana", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["id_usuario", 1], ["id_cabana", 2], ["start_time", "2022-02-12"], ["end_time", "2022-02-13"], ["nombre_cabana", "Telecaster"], ["created_at", "2022-02-25 22:50:05.735289"], ["updated_at", "2022-02-25 22:50:05.735289"]]
+  ↳ app/controllers/reservas_controller.rb:41:in `block in create'
+  [1m[36mTRANSACTION (6.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/reservas_controller.rb:41:in `block in create'
+Redirected to http://localhost:3000/reservas/7
+Completed 302 Found in 13ms (ActiveRecord: 6.6ms | Allocations: 3529)
+
+
+Started GET "/reservas/7" for ::1 at 2022-02-25 19:50:05 -0300
+Processing by ReservasController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mReserva Load (0.2ms)[0m  [1m[34mSELECT "reservas".* FROM "reservas" WHERE "reservas"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:77:in `set_reserva'
+  Rendering layout layouts/application.html.erb
+  Rendering reservas/show.html.erb within layouts/application
+  Rendered reservas/_reserva.html.erb (Duration: 0.1ms | Allocations: 44)
+  Rendered reservas/show.html.erb within layouts/application (Duration: 0.9ms | Allocations: 522)
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:15
+  Rendered shared/_navbar.html.erb (Duration: 3.2ms | Allocations: 1613)
+  Rendered layout layouts/application.html.erb (Duration: 7.2ms | Allocations: 4253)
+Completed 200 OK in 9ms (Views: 7.5ms | ActiveRecord: 0.6ms | Allocations: 5068)
+
+
+Started DELETE "/reservas/7" for ::1 at 2022-02-25 19:51:50 -0300
+Processing by ReservasController#destroy as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"7"}
+  [1m[36mReserva Load (0.2ms)[0m  [1m[34mSELECT "reservas".* FROM "reservas" WHERE "reservas"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:77:in `set_reserva'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/reservas_controller.rb:66:in `destroy'
+  [1m[36mReserva Destroy (0.3ms)[0m  [1m[31mDELETE FROM "reservas" WHERE "reservas"."id" = $1[0m  [["id", 7]]
+  ↳ app/controllers/reservas_controller.rb:66:in `destroy'
+  [1m[36mTRANSACTION (6.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/reservas_controller.rb:66:in `destroy'
+Redirected to http://localhost:3000/reservas
+Completed 302 Found in 21ms (ActiveRecord: 9.0ms | Allocations: 8434)
+
+
+Started GET "/reservas" for ::1 at 2022-02-25 19:51:50 -0300
+Processing by ReservasController#index as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering reservas/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/reservas/index.html.erb:2
+  [1m[36mReserva Load (0.2ms)[0m  [1m[34mSELECT "reservas".* FROM "reservas"[0m
+  ↳ app/views/reservas/index.html.erb:6
+  Rendered reservas/index.html.erb within layouts/application (Duration: 9.7ms | Allocations: 5219)
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 7.7ms | Allocations: 3837)
+  Rendered layout layouts/application.html.erb (Duration: 33.1ms | Allocations: 24487)
+Completed 200 OK in 35ms (Views: 28.8ms | ActiveRecord: 5.6ms | Allocations: 25429)
+
+
+Started GET "/reservas/new" for ::1 at 2022-02-25 19:51:51 -0300
+Processing by ReservasController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:19:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering reservas/new.html.erb within layouts/application
+  Rendered reservas/_form.html.erb (Duration: 2.5ms | Allocations: 746)
+  Rendered reservas/new.html.erb within layouts/application (Duration: 2.8ms | Allocations: 847)
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 1.4ms | Allocations: 804)
+  Rendered layout layouts/application.html.erb (Duration: 7.1ms | Allocations: 3769)
+Completed 200 OK in 11ms (Views: 7.4ms | ActiveRecord: 0.5ms | Allocations: 5062)
+
+
+Started POST "/reservas" for ::1 at 2022-02-25 19:51:55 -0300
+Processing by ReservasController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "reserva"=>{"start_time"=>"2022-02-24", "end_time"=>"2022-02-25"}, "commit"=>"Reservar"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:36:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/reserva.rb:12:in `overlapping'
+  [1m[36mReserva Pluck (0.2ms)[0m  [1m[34mSELECT "reservas"."start_time", "reservas"."end_time", "reservas"."id_cabana" FROM "reservas"[0m
+  ↳ app/models/reserva.rb:12:in `overlapping'
+  [1m[36mReserva Create (0.2ms)[0m  [1m[32mINSERT INTO "reservas" ("id_usuario", "id_cabana", "start_time", "end_time", "nombre_cabana", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["id_usuario", 1], ["id_cabana", 2], ["start_time", "2022-02-24"], ["end_time", "2022-02-25"], ["nombre_cabana", "Telecaster"], ["created_at", "2022-02-25 22:51:55.916533"], ["updated_at", "2022-02-25 22:51:55.916533"]]
+  ↳ app/controllers/reservas_controller.rb:41:in `block in create'
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/reservas_controller.rb:41:in `block in create'
+Redirected to http://localhost:3000/reservas/8
+Completed 302 Found in 10ms (ActiveRecord: 2.8ms | Allocations: 3759)
+
+
+Started GET "/reservas/8" for ::1 at 2022-02-25 19:51:55 -0300
+Processing by ReservasController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mReserva Load (0.1ms)[0m  [1m[34mSELECT "reservas".* FROM "reservas" WHERE "reservas"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:77:in `set_reserva'
+  Rendering layout layouts/application.html.erb
+  Rendering reservas/show.html.erb within layouts/application
+  Rendered reservas/_reserva.html.erb (Duration: 0.1ms | Allocations: 55)
+  Rendered reservas/show.html.erb within layouts/application (Duration: 1.0ms | Allocations: 575)
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:15
+  Rendered shared/_navbar.html.erb (Duration: 2.9ms | Allocations: 1613)
+  Rendered layout layouts/application.html.erb (Duration: 7.2ms | Allocations: 4306)
+Completed 200 OK in 9ms (Views: 7.1ms | ActiveRecord: 0.6ms | Allocations: 5131)
+
+
+Started DELETE "/reservas/8" for ::1 at 2022-02-25 19:53:05 -0300
+Processing by ReservasController#destroy as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"8"}
+  [1m[36mReserva Load (0.2ms)[0m  [1m[34mSELECT "reservas".* FROM "reservas" WHERE "reservas"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:77:in `set_reserva'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/reservas_controller.rb:66:in `destroy'
+  [1m[36mReserva Destroy (0.3ms)[0m  [1m[31mDELETE FROM "reservas" WHERE "reservas"."id" = $1[0m  [["id", 8]]
+  ↳ app/controllers/reservas_controller.rb:66:in `destroy'
+  [1m[36mTRANSACTION (5.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/reservas_controller.rb:66:in `destroy'
+Redirected to http://localhost:3000/reservas
+Completed 302 Found in 21ms (ActiveRecord: 8.7ms | Allocations: 8410)
+
+
+Started GET "/reservas" for ::1 at 2022-02-25 19:53:05 -0300
+Processing by ReservasController#index as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering reservas/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/reservas/index.html.erb:2
+  [1m[36mReserva Load (0.2ms)[0m  [1m[34mSELECT "reservas".* FROM "reservas"[0m
+  ↳ app/views/reservas/index.html.erb:6
+  Rendered reservas/index.html.erb within layouts/application (Duration: 10.0ms | Allocations: 5219)
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 7.0ms | Allocations: 3837)
+  Rendered layout layouts/application.html.erb (Duration: 31.6ms | Allocations: 24430)
+Completed 200 OK in 33ms (Views: 27.8ms | ActiveRecord: 4.8ms | Allocations: 25375)
+
+
+Started GET "/reservas/new" for ::1 at 2022-02-25 19:53:06 -0300
+Processing by ReservasController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:19:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering reservas/new.html.erb within layouts/application
+  Rendered reservas/_form.html.erb (Duration: 1.4ms | Allocations: 746)
+  Rendered reservas/new.html.erb within layouts/application (Duration: 1.7ms | Allocations: 847)
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 1.6ms | Allocations: 804)
+  Rendered layout layouts/application.html.erb (Duration: 5.9ms | Allocations: 3779)
+Completed 200 OK in 9ms (Views: 6.1ms | ActiveRecord: 0.4ms | Allocations: 5065)
+
+
+Started POST "/reservas" for ::1 at 2022-02-25 19:53:11 -0300
+Processing by ReservasController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "reserva"=>{"start_time"=>"2022-02-24", "end_time"=>"2022-02-25"}, "commit"=>"Reservar"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:36:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/reserva.rb:12:in `overlapping'
+  [1m[36mReserva Pluck (0.2ms)[0m  [1m[34mSELECT "reservas"."start_time", "reservas"."end_time", "reservas"."id_cabana" FROM "reservas"[0m
+  ↳ app/models/reserva.rb:12:in `overlapping'
+  [1m[36mReserva Create (0.2ms)[0m  [1m[32mINSERT INTO "reservas" ("id_usuario", "id_cabana", "start_time", "end_time", "nombre_cabana", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["id_usuario", 1], ["id_cabana", 2], ["start_time", "2022-02-24"], ["end_time", "2022-02-25"], ["nombre_cabana", "Telecaster"], ["created_at", "2022-02-25 22:53:11.263707"], ["updated_at", "2022-02-25 22:53:11.263707"]]
+  ↳ app/controllers/reservas_controller.rb:41:in `block in create'
+  [1m[36mTRANSACTION (6.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/reservas_controller.rb:41:in `block in create'
+Redirected to http://localhost:3000/reservas/9
+Completed 302 Found in 14ms (ActiveRecord: 6.7ms | Allocations: 3758)
+
+
+Started GET "/reservas/9" for ::1 at 2022-02-25 19:53:11 -0300
+Processing by ReservasController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mReserva Load (0.2ms)[0m  [1m[34mSELECT "reservas".* FROM "reservas" WHERE "reservas"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:77:in `set_reserva'
+  Rendering layout layouts/application.html.erb
+  Rendering reservas/show.html.erb within layouts/application
+  Rendered reservas/_reserva.html.erb (Duration: 0.1ms | Allocations: 55)
+  Rendered reservas/show.html.erb within layouts/application (Duration: 1.4ms | Allocations: 602)
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:15
+  Rendered shared/_navbar.html.erb (Duration: 2.9ms | Allocations: 1613)
+  Rendered layout layouts/application.html.erb (Duration: 8.0ms | Allocations: 4333)
+Completed 200 OK in 10ms (Views: 8.3ms | ActiveRecord: 0.7ms | Allocations: 5158)
+
+
+Started DELETE "/reservas/9" for ::1 at 2022-02-25 19:53:52 -0300
+Processing by ReservasController#destroy as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"9"}
+  [1m[36mReserva Load (0.1ms)[0m  [1m[34mSELECT "reservas".* FROM "reservas" WHERE "reservas"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:77:in `set_reserva'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/reservas_controller.rb:66:in `destroy'
+  [1m[36mReserva Destroy (0.2ms)[0m  [1m[31mDELETE FROM "reservas" WHERE "reservas"."id" = $1[0m  [["id", 9]]
+  ↳ app/controllers/reservas_controller.rb:66:in `destroy'
+  [1m[36mTRANSACTION (5.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/reservas_controller.rb:66:in `destroy'
+Redirected to http://localhost:3000/reservas
+Completed 302 Found in 22ms (ActiveRecord: 9.0ms | Allocations: 8419)
+
+
+Started GET "/reservas" for ::1 at 2022-02-25 19:53:52 -0300
+Processing by ReservasController#index as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering reservas/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/reservas/index.html.erb:2
+  [1m[36mReserva Load (0.2ms)[0m  [1m[34mSELECT "reservas".* FROM "reservas"[0m
+  ↳ app/views/reservas/index.html.erb:6
+  Rendered reservas/index.html.erb within layouts/application (Duration: 10.8ms | Allocations: 5244)
+  [1m[36mCabana Load (0.2ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 7.2ms | Allocations: 3837)
+  Rendered layout layouts/application.html.erb (Duration: 33.9ms | Allocations: 24489)
+Completed 200 OK in 36ms (Views: 30.4ms | ActiveRecord: 5.0ms | Allocations: 25435)
+
+
+Started GET "/reservas/new" for ::1 at 2022-02-25 19:53:53 -0300
+Processing by ReservasController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:19:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering reservas/new.html.erb within layouts/application
+  Rendered reservas/_form.html.erb (Duration: 1.4ms | Allocations: 746)
+  Rendered reservas/new.html.erb within layouts/application (Duration: 1.6ms | Allocations: 847)
+  [1m[36mCabana Load (0.2ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 1.6ms | Allocations: 804)
+  Rendered layout layouts/application.html.erb (Duration: 5.9ms | Allocations: 3769)
+Completed 200 OK in 9ms (Views: 6.2ms | ActiveRecord: 0.4ms | Allocations: 5041)
+
+
+Started POST "/reservas" for ::1 at 2022-02-25 19:53:58 -0300
+Processing by ReservasController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "reserva"=>{"start_time"=>"2022-02-24", "end_time"=>"2022-02-25"}, "commit"=>"Reservar"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:36:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/reserva.rb:12:in `overlapping'
+  [1m[36mReserva Pluck (0.2ms)[0m  [1m[34mSELECT "reservas"."start_time", "reservas"."end_time", "reservas"."id_cabana" FROM "reservas"[0m
+  ↳ app/models/reserva.rb:12:in `overlapping'
+  [1m[36mReserva Create (0.3ms)[0m  [1m[32mINSERT INTO "reservas" ("id_usuario", "id_cabana", "start_time", "end_time", "nombre_cabana", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["id_usuario", 1], ["id_cabana", 2], ["start_time", "2022-02-24"], ["end_time", "2022-02-25"], ["nombre_cabana", "Telecaster"], ["created_at", "2022-02-25 22:53:58.614443"], ["updated_at", "2022-02-25 22:53:58.614443"]]
+  ↳ app/controllers/reservas_controller.rb:41:in `block in create'
+  [1m[36mTRANSACTION (5.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/reservas_controller.rb:41:in `block in create'
+Redirected to http://localhost:3000/reservas/10
+Completed 302 Found in 13ms (ActiveRecord: 6.3ms | Allocations: 3740)
+
+
+Started GET "/reservas/10" for ::1 at 2022-02-25 19:53:58 -0300
+Processing by ReservasController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mReserva Load (0.1ms)[0m  [1m[34mSELECT "reservas".* FROM "reservas" WHERE "reservas"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:77:in `set_reserva'
+  Rendering layout layouts/application.html.erb
+  Rendering reservas/show.html.erb within layouts/application
+  Rendered reservas/_reserva.html.erb (Duration: 0.1ms | Allocations: 55)
+  Rendered reservas/show.html.erb within layouts/application (Duration: 1.2ms | Allocations: 612)
+  [1m[36mCabana Load (0.2ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:15
+  Rendered shared/_navbar.html.erb (Duration: 2.5ms | Allocations: 1613)
+  Rendered layout layouts/application.html.erb (Duration: 6.8ms | Allocations: 4343)
+Completed 200 OK in 9ms (Views: 6.9ms | ActiveRecord: 0.5ms | Allocations: 5168)
+
+
+Started DELETE "/reservas/10" for ::1 at 2022-02-25 19:55:33 -0300
+Processing by ReservasController#destroy as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"10"}
+  [1m[36mReserva Load (0.1ms)[0m  [1m[34mSELECT "reservas".* FROM "reservas" WHERE "reservas"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:77:in `set_reserva'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/reservas_controller.rb:66:in `destroy'
+  [1m[36mReserva Destroy (0.2ms)[0m  [1m[31mDELETE FROM "reservas" WHERE "reservas"."id" = $1[0m  [["id", 10]]
+  ↳ app/controllers/reservas_controller.rb:66:in `destroy'
+  [1m[36mTRANSACTION (5.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/reservas_controller.rb:66:in `destroy'
+Redirected to http://localhost:3000/reservas
+Completed 302 Found in 20ms (ActiveRecord: 8.7ms | Allocations: 8393)
+
+
+Started GET "/reservas" for ::1 at 2022-02-25 19:55:33 -0300
+Processing by ReservasController#index as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering reservas/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/reservas/index.html.erb:2
+  [1m[36mReserva Load (0.3ms)[0m  [1m[34mSELECT "reservas".* FROM "reservas"[0m
+  ↳ app/views/reservas/index.html.erb:6
+  Rendered reservas/index.html.erb within layouts/application (Duration: 9.7ms | Allocations: 5213)
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 7.5ms | Allocations: 3837)
+  Rendered layout layouts/application.html.erb (Duration: 31.9ms | Allocations: 24443)
+Completed 200 OK in 34ms (Views: 28.0ms | ActiveRecord: 5.0ms | Allocations: 25385)
+
+
+Started GET "/reservas/new" for ::1 at 2022-02-25 19:55:34 -0300
+Processing by ReservasController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:19:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering reservas/new.html.erb within layouts/application
+  Rendered reservas/_form.html.erb (Duration: 1.4ms | Allocations: 746)
+  Rendered reservas/new.html.erb within layouts/application (Duration: 1.7ms | Allocations: 847)
+  [1m[36mCabana Load (0.2ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 1.5ms | Allocations: 804)
+  Rendered layout layouts/application.html.erb (Duration: 6.1ms | Allocations: 3769)
+Completed 200 OK in 10ms (Views: 6.4ms | ActiveRecord: 0.4ms | Allocations: 5057)
+
+
+Started POST "/reservas" for ::1 at 2022-02-25 19:55:39 -0300
+Processing by ReservasController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "reserva"=>{"start_time"=>"2022-02-24", "end_time"=>"2022-02-25"}, "commit"=>"Reservar"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:36:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/reserva.rb:12:in `overlapping'
+  [1m[36mReserva Pluck (0.2ms)[0m  [1m[34mSELECT "reservas"."start_time", "reservas"."end_time", "reservas"."id_cabana" FROM "reservas"[0m
+  ↳ app/models/reserva.rb:12:in `overlapping'
+  [1m[36mReserva Create (0.2ms)[0m  [1m[32mINSERT INTO "reservas" ("id_usuario", "id_cabana", "start_time", "end_time", "nombre_cabana", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["id_usuario", 1], ["id_cabana", 2], ["start_time", "2022-02-24"], ["end_time", "2022-02-25"], ["nombre_cabana", "Telecaster"], ["created_at", "2022-02-25 22:55:39.279000"], ["updated_at", "2022-02-25 22:55:39.279000"]]
+  ↳ app/controllers/reservas_controller.rb:41:in `block in create'
+  [1m[36mTRANSACTION (6.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/reservas_controller.rb:41:in `block in create'
+Redirected to http://localhost:3000/reservas/11
+Completed 302 Found in 13ms (ActiveRecord: 6.7ms | Allocations: 3750)
+
+
+Started GET "/reservas/11" for ::1 at 2022-02-25 19:55:39 -0300
+Processing by ReservasController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mReserva Load (0.1ms)[0m  [1m[34mSELECT "reservas".* FROM "reservas" WHERE "reservas"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:77:in `set_reserva'
+  Rendering layout layouts/application.html.erb
+  Rendering reservas/show.html.erb within layouts/application
+  Rendered reservas/_reserva.html.erb (Duration: 0.1ms | Allocations: 55)
+  Rendered reservas/show.html.erb within layouts/application (Duration: 1.0ms | Allocations: 605)
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:15
+  Rendered shared/_navbar.html.erb (Duration: 2.8ms | Allocations: 1613)
+  Rendered layout layouts/application.html.erb (Duration: 21.6ms | Allocations: 4336)
+Completed 200 OK in 24ms (Views: 21.5ms | ActiveRecord: 0.6ms | Allocations: 5161)
+
+
+Started GET "/" for ::1 at 2022-02-25 19:59:22 -0300
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:8
+  Rendered pages/home.html.erb within layouts/application (Duration: 13.7ms | Allocations: 4690)
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 7.3ms | Allocations: 3834)
+  Rendered layout layouts/application.html.erb (Duration: 37.3ms | Allocations: 23902)
+Completed 200 OK in 44ms (Views: 32.6ms | ActiveRecord: 6.1ms | Allocations: 27155)
+
+
+Started GET "/cabanas/" for ::1 at 2022-02-25 19:59:26 -0300
+Processing by CabanasController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cabanas/index.html.erb within layouts/application
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/cabanas/index.html.erb:3
+  Rendered cabanas/index.html.erb within layouts/application (Duration: 2.6ms | Allocations: 946)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:15
+  Rendered shared/_navbar.html.erb (Duration: 1.6ms | Allocations: 1066)
+  Rendered layout layouts/application.html.erb (Duration: 7.6ms | Allocations: 4575)
+Completed 200 OK in 9ms (Views: 8.0ms | ActiveRecord: 0.5ms | Allocations: 5552)
+
+
+Started GET "/cabanas/2" for ::1 at 2022-02-25 19:59:28 -0300
+Processing by CabanasController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mCabana Load (0.2ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas" WHERE "cabanas"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/cabanas_controller.rb:7:in `show'
+  [1m[36mCACHE Cabana Load (0.0ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas" WHERE "cabanas"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/cabanas_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering cabanas/show.html.erb within layouts/application
+  [1m[36mReserva Load (0.4ms)[0m  [1m[34mSELECT "reservas".* FROM "reservas"[0m
+  ↳ app/views/cabanas/show.html.erb:54
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/cabanas/show.html.erb:58
+  Rendered /Users/fgomez/.rvm/gems/ruby-3.1.0/gems/simple_calendar-2.4.3/app/views/simple_calendar/_month_calendar.html.erb (Duration: 7.5ms | Allocations: 8088)
+  Rendered cabanas/show.html.erb within layouts/application (Duration: 14.7ms | Allocations: 11182)
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 1.6ms | Allocations: 805)
+  Rendered layout layouts/application.html.erb (Duration: 19.7ms | Allocations: 14216)
+Completed 200 OK in 26ms (Views: 17.2ms | ActiveRecord: 3.2ms | Allocations: 16802)
+
+
+Started GET "/reservas/new" for ::1 at 2022-02-25 19:59:29 -0300
+Processing by ReservasController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:19:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering reservas/new.html.erb within layouts/application
+  Rendered reservas/_form.html.erb (Duration: 10.9ms | Allocations: 824)
+  Rendered reservas/new.html.erb within layouts/application (Duration: 11.2ms | Allocations: 946)
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 1.5ms | Allocations: 906)
+  Rendered layout layouts/application.html.erb (Duration: 15.9ms | Allocations: 4170)
+Completed 200 OK in 21ms (Views: 16.6ms | ActiveRecord: 0.5ms | Allocations: 6415)
+
+
+Started POST "/reservas" for ::1 at 2022-02-25 19:59:35 -0300
+Processing by ReservasController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "reserva"=>{"start_time"=>"2022-02-24", "end_time"=>"2022-02-25"}, "commit"=>"Reservar"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:36:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/reserva.rb:12:in `overlapping'
+  [1m[36mReserva Pluck (0.2ms)[0m  [1m[34mSELECT "reservas"."start_time", "reservas"."end_time", "reservas"."id_cabana" FROM "reservas"[0m
+  ↳ app/models/reserva.rb:12:in `overlapping'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/reservas_controller.rb:41:in `block in create'
+  Rendering layout layouts/application.html.erb
+  Rendering reservas/new.html.erb within layouts/application
+  Rendered reservas/_form.html.erb (Duration: 0.5ms | Allocations: 179)
+  Rendered reservas/new.html.erb within layouts/application (Duration: 0.9ms | Allocations: 278)
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 1.7ms | Allocations: 805)
+  Rendered layout layouts/application.html.erb (Duration: 6.1ms | Allocations: 3201)
+Completed 422 Unprocessable Entity in 13ms (Views: 6.3ms | ActiveRecord: 1.0ms | Allocations: 6939)
+
+
+Started GET "/cabanas/2" for ::1 at 2022-02-25 19:59:42 -0300
+Processing by CabanasController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mCabana Load (0.2ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas" WHERE "cabanas"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/cabanas_controller.rb:7:in `show'
+  [1m[36mCACHE Cabana Load (0.0ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas" WHERE "cabanas"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/cabanas_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering cabanas/show.html.erb within layouts/application
+  [1m[36mReserva Load (0.2ms)[0m  [1m[34mSELECT "reservas".* FROM "reservas"[0m
+  ↳ app/views/cabanas/show.html.erb:54
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/cabanas/show.html.erb:58
+  Rendered /Users/fgomez/.rvm/gems/ruby-3.1.0/gems/simple_calendar-2.4.3/app/views/simple_calendar/_month_calendar.html.erb (Duration: 6.7ms | Allocations: 7286)
+  Rendered cabanas/show.html.erb within layouts/application (Duration: 8.5ms | Allocations: 8257)
+  [1m[36mCabana Load (0.2ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 1.3ms | Allocations: 804)
+  Rendered layout layouts/application.html.erb (Duration: 12.7ms | Allocations: 11188)
+Completed 200 OK in 16ms (Views: 12.5ms | ActiveRecord: 0.8ms | Allocations: 12469)
+
+
+Started GET "/reservas/new" for ::1 at 2022-02-25 20:00:24 -0300
+Processing by ReservasController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:19:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering reservas/new.html.erb within layouts/application
+  Rendered reservas/_form.html.erb (Duration: 1.2ms | Allocations: 613)
+  Rendered reservas/new.html.erb within layouts/application (Duration: 1.4ms | Allocations: 712)
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 1.8ms | Allocations: 804)
+  Rendered layout layouts/application.html.erb (Duration: 7.2ms | Allocations: 3640)
+Completed 200 OK in 11ms (Views: 7.4ms | ActiveRecord: 0.5ms | Allocations: 4899)
+
+
+Started POST "/reservas" for ::1 at 2022-02-25 20:00:36 -0300
+Processing by ReservasController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "reserva"=>{"start_time"=>"2022-02-15", "end_time"=>"2022-02-17"}, "commit"=>"Reservar"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:36:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/reserva.rb:12:in `overlapping'
+  [1m[36mReserva Pluck (0.2ms)[0m  [1m[34mSELECT "reservas"."start_time", "reservas"."end_time", "reservas"."id_cabana" FROM "reservas"[0m
+  ↳ app/models/reserva.rb:12:in `overlapping'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/reservas_controller.rb:41:in `block in create'
+  Rendering layout layouts/application.html.erb
+  Rendering reservas/new.html.erb within layouts/application
+  Rendered reservas/_form.html.erb (Duration: 0.4ms | Allocations: 173)
+  Rendered reservas/new.html.erb within layouts/application (Duration: 0.6ms | Allocations: 272)
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 1.2ms | Allocations: 804)
+  Rendered layout layouts/application.html.erb (Duration: 5.0ms | Allocations: 3194)
+Completed 422 Unprocessable Entity in 11ms (Views: 5.2ms | ActiveRecord: 0.8ms | Allocations: 6635)
+
+
+Started GET "/cabanas/2" for ::1 at 2022-02-25 20:00:38 -0300
+Processing by CabanasController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mCabana Load (0.1ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas" WHERE "cabanas"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/cabanas_controller.rb:7:in `show'
+  [1m[36mCACHE Cabana Load (0.0ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas" WHERE "cabanas"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/cabanas_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering cabanas/show.html.erb within layouts/application
+  [1m[36mReserva Load (0.3ms)[0m  [1m[34mSELECT "reservas".* FROM "reservas"[0m
+  ↳ app/views/cabanas/show.html.erb:54
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/cabanas/show.html.erb:58
+  Rendered /Users/fgomez/.rvm/gems/ruby-3.1.0/gems/simple_calendar-2.4.3/app/views/simple_calendar/_month_calendar.html.erb (Duration: 7.4ms | Allocations: 7263)
+  Rendered cabanas/show.html.erb within layouts/application (Duration: 9.0ms | Allocations: 8200)
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 1.4ms | Allocations: 804)
+  Rendered layout layouts/application.html.erb (Duration: 13.4ms | Allocations: 11122)
+Completed 200 OK in 16ms (Views: 13.0ms | ActiveRecord: 0.9ms | Allocations: 12387)
+
+
+Started GET "/reservas/new" for ::1 at 2022-02-25 20:00:41 -0300
+Processing by ReservasController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:19:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering reservas/new.html.erb within layouts/application
+  Rendered reservas/_form.html.erb (Duration: 1.3ms | Allocations: 613)
+  Rendered reservas/new.html.erb within layouts/application (Duration: 1.6ms | Allocations: 712)
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 1.6ms | Allocations: 804)
+  Rendered layout layouts/application.html.erb (Duration: 6.6ms | Allocations: 3634)
+Completed 200 OK in 10ms (Views: 7.1ms | ActiveRecord: 0.5ms | Allocations: 4892)
+
+
+Started POST "/reservas" for ::1 at 2022-02-25 20:00:44 -0300
+Processing by ReservasController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "reserva"=>{"start_time"=>"", "end_time"=>""}, "commit"=>"Reservar"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:36:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering reservas/new.html.erb within layouts/application
+  Rendered reservas/_form.html.erb (Duration: 0.4ms | Allocations: 173)
+  Rendered reservas/new.html.erb within layouts/application (Duration: 0.6ms | Allocations: 272)
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 1.7ms | Allocations: 806)
+  Rendered layout layouts/application.html.erb (Duration: 5.4ms | Allocations: 3196)
+Completed 422 Unprocessable Entity in 9ms (Views: 5.5ms | ActiveRecord: 0.5ms | Allocations: 5059)
+
+
+Started GET "/cabanas/2" for ::1 at 2022-02-25 20:00:45 -0300
+Processing by CabanasController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mCabana Load (0.2ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas" WHERE "cabanas"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/cabanas_controller.rb:7:in `show'
+  [1m[36mCACHE Cabana Load (0.0ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas" WHERE "cabanas"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/cabanas_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering cabanas/show.html.erb within layouts/application
+  [1m[36mReserva Load (0.3ms)[0m  [1m[34mSELECT "reservas".* FROM "reservas"[0m
+  ↳ app/views/cabanas/show.html.erb:54
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/cabanas/show.html.erb:58
+  Rendered /Users/fgomez/.rvm/gems/ruby-3.1.0/gems/simple_calendar-2.4.3/app/views/simple_calendar/_month_calendar.html.erb (Duration: 6.5ms | Allocations: 7251)
+  Rendered cabanas/show.html.erb within layouts/application (Duration: 8.1ms | Allocations: 8187)
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 1.3ms | Allocations: 804)
+  Rendered layout layouts/application.html.erb (Duration: 12.0ms | Allocations: 11109)
+Completed 200 OK in 15ms (Views: 11.7ms | ActiveRecord: 0.9ms | Allocations: 12374)
+
+
+Started GET "/reservas/new" for ::1 at 2022-02-25 20:00:47 -0300
+Processing by ReservasController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:19:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering reservas/new.html.erb within layouts/application
+  Rendered reservas/_form.html.erb (Duration: 1.2ms | Allocations: 613)
+  Rendered reservas/new.html.erb within layouts/application (Duration: 1.4ms | Allocations: 712)
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 1.4ms | Allocations: 804)
+  Rendered layout layouts/application.html.erb (Duration: 5.8ms | Allocations: 3634)
+Completed 200 OK in 9ms (Views: 5.9ms | ActiveRecord: 0.5ms | Allocations: 4889)
+
+
+Started POST "/reservas" for ::1 at 2022-02-25 20:00:53 -0300
+Processing by ReservasController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "reserva"=>{"start_time"=>"2022-02-23", "end_time"=>"2022-02-26"}, "commit"=>"Reservar"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reservas_controller.rb:36:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/reserva.rb:12:in `overlapping'
+  [1m[36mReserva Pluck (0.2ms)[0m  [1m[34mSELECT "reservas"."start_time", "reservas"."end_time", "reservas"."id_cabana" FROM "reservas"[0m
+  ↳ app/models/reserva.rb:12:in `overlapping'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/reservas_controller.rb:41:in `block in create'
+  Rendering layout layouts/application.html.erb
+  Rendering reservas/new.html.erb within layouts/application
+  Rendered reservas/_form.html.erb (Duration: 0.4ms | Allocations: 173)
+  Rendered reservas/new.html.erb within layouts/application (Duration: 0.7ms | Allocations: 272)
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 1.4ms | Allocations: 804)
+  Rendered layout layouts/application.html.erb (Duration: 5.1ms | Allocations: 3194)
+Completed 422 Unprocessable Entity in 11ms (Views: 5.3ms | ActiveRecord: 0.9ms | Allocations: 6614)
+
+
+Started GET "/cabanas/2" for ::1 at 2022-02-25 20:00:54 -0300
+Processing by CabanasController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mCabana Load (0.1ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas" WHERE "cabanas"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/cabanas_controller.rb:7:in `show'
+  [1m[36mCACHE Cabana Load (0.0ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas" WHERE "cabanas"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/cabanas_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering cabanas/show.html.erb within layouts/application
+  [1m[36mReserva Load (0.3ms)[0m  [1m[34mSELECT "reservas".* FROM "reservas"[0m
+  ↳ app/views/cabanas/show.html.erb:54
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/cabanas/show.html.erb:58
+  Rendered /Users/fgomez/.rvm/gems/ruby-3.1.0/gems/simple_calendar-2.4.3/app/views/simple_calendar/_month_calendar.html.erb (Duration: 6.4ms | Allocations: 7275)
+  Rendered cabanas/show.html.erb within layouts/application (Duration: 8.0ms | Allocations: 8211)
+  [1m[36mCabana Load (0.3ms)[0m  [1m[34mSELECT "cabanas".* FROM "cabanas"[0m
+  ↳ app/views/shared/_navbar.html.erb:9
+  Rendered shared/_navbar.html.erb (Duration: 1.4ms | Allocations: 804)
+  Rendered layout layouts/application.html.erb (Duration: 11.9ms | Allocations: 11133)
+Completed 200 OK in 15ms (Views: 11.6ms | ActiveRecord: 0.9ms | Allocations: 12398)
+
+
