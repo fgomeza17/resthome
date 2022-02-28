@@ -1,7 +1,7 @@
 # README
 
-Este repositorio referencia al desafio tecnico para postulacion el cual
-consiste en programar una aplicacion web.
+Este repositorio referencia al desafío técnico para postulación, el cual
+consiste en programar una aplicación web.
 
 Una vez descargado el repositorio se debe realizar lo siguiente para ejecutarlo:
 
@@ -25,7 +25,7 @@ Si lo agregaste al archivo, lo cargamos en la terminal
     $ source ~/.bash_profile
 ```
 
-luego modificamos el usuario y nombre de la variable que contiene la contraseña
+luego modificamos el usuario de postgresql y nombre de la variable que contiene la contraseña
 en el archivo que hace mención a la base de datos. 
 Este se encuentra en resthome/config/database.yml
 
@@ -34,7 +34,7 @@ Este se encuentra en resthome/config/database.yml
     password: <%= ENV['USER_DATABASE_PASSWORD'] %>
 ```
 
-Luego instalamos las dependencias de la aplicacion
+Luego instalamos las dependencias de la aplicación
 
 ```
     $ bundle
